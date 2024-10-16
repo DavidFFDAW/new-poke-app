@@ -17,20 +17,15 @@ export default function Home() {
                         className="general-input inpt-pad"
                         defaultValue=""
                     />
-                    <div className="btn-group">
-                        <button className="btn btn-download" type="button">
-                            ¿____?
-                        </button>
-                        <button className="btn btn-download" type="button">
+                    <form className="btn-group" action="/">
+                        <button formAction="pokemon" className="btn btn-download" type="submit">
                             Pokemon
                         </button>
-                        <button className="btn btn-download" type="button">
-                            ¿____?
-                        </button>
-                        <button className="btn btn-download" type="button">
+                        
+                        <button formAction="move" className="btn btn-download" type="submit">
                             Movimiento
                         </button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

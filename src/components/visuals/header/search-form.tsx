@@ -4,7 +4,6 @@ import { pokemonStorage } from "../../../services/pokemon.storage.service";
 
 export default function HeaderSearchForm() {
     const navigate = useNavigate();
-    const cache = pokemonStorage.getPokemonCache();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -13,12 +12,8 @@ export default function HeaderSearchForm() {
         const search = datas.get("search") as string;
         if (!search) return;
 
-        const isRealPokemonName =
-            cache &&
-            cache.find(
-                (poke) => poke.name.toLowerCase() === search.toLowerCase()
-            );
-        if (isRealPokemonName) return navigate(`/pokemon/${search}`);
+        const pokemonExistsInCache = pokemonStorage.isStoredPokemon(search);
+        if (pokemonExistsInCache) return navigate(`/pokemon/${search}`);
 
         if (Number.isInteger(search)) return navigate(`/pokemon/${search}`);
 

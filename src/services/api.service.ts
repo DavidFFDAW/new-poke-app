@@ -9,10 +9,7 @@ export const apiService = {
     getSinglePokemon: (uuid: string | number) => {
         return http.get(`${endpoint}/pokemon/${uuid}`);
     },
-    getFilteredPokemons: (uuid: string) => {
-        const cache = pokemonStorage.getPokemonCache();
-        if (!cache) return [];
-
-        return cache.filter(pokemon => pokemon.name.toLowerCase().includes(uuid.toLowerCase()));
+    getPokemonTypes: (uuid: string | number) => {
+        return http.get(`${endpoint}/pokemon/${uuid}`).then(response => response.types);
     },
 };
