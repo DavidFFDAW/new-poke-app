@@ -16,10 +16,10 @@ function App() {
         <BrowserRouter future={{ v7_startTransition: true }}>
             <Routes>
                 <Route path="/" element={<AppLayout />}>
-                    <Route index element={<HomePage />} />
-                    <Route path="/pokemon/:uuid" element={<PokemonPage />} />
-                    <Route path="/pokemon/search/:uuid" element={<PokemonSearchPage />} />
-                    <Route path="/pokemon/move/info/:move" element={<MoveInfoPage />} />
+                    <Route index element={<HomePage />} key={'home-page'} />
+                    <Route path="/pokemon/:uuid" element={<PokemonPage />} key={'pokemon-details-page'} />
+                    <Route path="/pokemon/search/:uuid" element={<PokemonSearchPage />} key={'pokemon-search-page'} />
+                    <Route path="/pokemon/move/info/:move" element={<MoveInfoPage />} key="pokemon-move-info-details-page" />
                     <Route path="*" element={<ErrorPage />} />
                 </Route>
             </Routes>

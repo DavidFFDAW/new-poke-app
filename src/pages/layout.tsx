@@ -1,10 +1,10 @@
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
-import "../assets/css/header.css";
 import HeaderSearchForm from "../components/visuals/header/search-form";
+import "../assets/css/header.css";
 
 export default function AppLayout() {
-    const { pathname } = useLocation();
     const navigate = useNavigate();
+    const { pathname } = useLocation();
 
     const handleGoBack = () => {
         navigate(-1);
@@ -69,7 +69,7 @@ export default function AppLayout() {
                 <HeaderSearchForm />
             </header>
 
-            <section className="pokeViewport" style={{ marginTop: 80 }}>
+            <section className={`pokeViewport ${pathname.slice(1).replace(/\//g, "-")}`}>
                 <Outlet />
             </section>
         </>

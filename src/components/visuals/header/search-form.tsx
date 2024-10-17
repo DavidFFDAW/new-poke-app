@@ -1,9 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { pokemonStorage } from "../../../services/pokemon.storage.service";
 
 export default function HeaderSearchForm() {
     const navigate = useNavigate();
+    const params = useParams();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -31,7 +32,7 @@ export default function HeaderSearchForm() {
                 className="text-search"
                 type="text"
                 name="search"
-                defaultValue=""
+                defaultValue={params.uuid}
             />
             <button className="btn btn-search" type="submit">
                 Search

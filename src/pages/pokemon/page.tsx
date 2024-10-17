@@ -1,3 +1,4 @@
+import SEOHead from "../../components/seo/head";
 import PokemonDatas from "./PokemonDatas";
 import usePokemonDetails from "./usePokemonDetails";
 
@@ -6,9 +7,13 @@ export default function PokemonPage() {
     console.log({ pokemon });
 
     return (
-        <article className="pokemon-page">
-            {pokemon ? <PokemonDatas pokemon={pokemon} /> : null}
-            {loading && <p>Loading...</p>}
-        </article>
+        <>
+            {pokemon ? <SEOHead title={`${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`} /> : null}
+
+            <article className="pokemon-page">
+                {pokemon ? <PokemonDatas pokemon={pokemon} /> : null}
+                {loading && <p>Loading...</p>}
+            </article>
+        </>
     );
 }

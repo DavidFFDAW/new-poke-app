@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { apiService } from "../../services/api.service";
 import { APIPokemonDetails } from "../../@types/api.pokemon";
-import { PokemonDetailsPageState } from "../../@types/global.pokemon";
+import { PokemonDetails, PokemonDetailsPageState } from "../../@types/global.pokemon";
 
 export default function usePokemonDetails() {
     const { uuid } = useParams();
@@ -15,8 +15,8 @@ export default function usePokemonDetails() {
     useEffect(() => {
         if (uuid) {
             apiService
-                .getSinglePokemon(uuid as string)
-                .then((pokemon: APIPokemonDetails) => {
+                .getPokemonDetails(uuid as string)
+                .then((pokemon: PokemonDetails) => {
                     setDatas((pr) => ({
                         ...pr,
                         pokemon,
