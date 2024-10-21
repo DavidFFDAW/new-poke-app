@@ -1,0 +1,36 @@
+.flex {
+    display: flex;
+    align-items: center;
+}
+.flex.column {
+    flex-direction: column;
+}
+.flex.gap {
+    gap: 20px;
+}
+.flex.gap-sm {
+    gap: 5px;
+}
+.flex.wrap {
+    flex-wrap: wrap;
+}
+.noverflow {
+    overflow: hidden;
+}
+.overflow-x {
+    overflow-x: auto;
+}
+.overflow-y {
+    overflow-y: auto;
+}
+.pokeViewport {
+    margin-top: 80px;
+    padding: 0;
+}
+.pokemon-page.pokemon-details-page .pokeViewport {
+    margin-top: 0;
+    background: transparent;
+}
+.pokemon-page.pokemon-details-page .pokeViewport .details-card {
+    min-height: 200px;
+}

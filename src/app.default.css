@@ -55,7 +55,7 @@
     flex-direction: row;
 }
 .grid-types .poke-type-tag {
-    margin: 6px;
+    margin: 0px;
 }
 .center-fix {
     position: fixed;
@@ -183,7 +183,6 @@ input.inpt-pad {
     margin: 0 5px;
 }
 .tag {
-    margin: 5px 5px;
     padding: 4px 10px;
     border-radius: 30px;
     text-transform: uppercase;
@@ -199,6 +198,10 @@ input.inpt-pad {
 }
 .default-tag:hover {
     background: #bdbdbd;
+}
+.tag.default-tag.active {
+    background: #e64d4d;
+    color: #fff;
 }
 
 .rounded-box {

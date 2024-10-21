@@ -1,26 +1,29 @@
-export function getTransformedPokemonMoveDatas(moves) {
-    return moves.map((move) => {
-        return {
-            name: move.move.name,
-            game: move.version_group_details.flatMap((version) => {
-                return version.version_group.name.split('-').map(game => {
-                    return {
-                        name: game,
-                        level_learned_at: version.level_learned_at,
-                        way_learned: version.move_learn_method.name
-                    }
+import { Mfe } from "../@types/api.pokemon";
+import { ParsedMove } from "../@types/global.pokemon";
+
+export function getTransformedPokemonMoveDatas(moves: Mfe[]): ParsedMove[] {
+    return moves
+        .reduce((acc: ParsedMove[], move) => {
+            const { version_group_details } = move;
+
+            version_group_details.forEach((detail) => {
+                acc.push({
+                    move: move.move.name,
+                    version: detail.version_group.name,
+                    level_learned_at: detail.level_learned_at,
+                    level_learning_method: detail.move_learn_method.name,
                 });
-            }),
-        }
-    });
+            });
+
+            return acc;
+        }, [])
+        .sort((a, b) => a.level_learned_at - b.level_learned_at);
 }
 
-export function getUniqueGamesFromMoves(parsedMoves) {
-    const uniques = new Set(parsedMoves.reduce((acc, move) => {
-        move.game.forEach(game => {
-            acc.push(game.name);
-        });
-        return acc;
-    }, []));
-    return Array.from(uniques);
+export function getUniqueGamesFromMoves(moves: Mfe[]): string[] {
+    const versions = moves.flatMap((move) =>
+        move.version_group_details.map((detail) => detail.version_group.name)
+    );
+
+    return Array.from(new Set(versions));
 }

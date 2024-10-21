@@ -3,10 +3,15 @@ import PokeSimpleCard from "./poke-simple-card";
 import PokemonRequestCard from "./pokemon-request-card";
 
 interface Props {
-  pokemon: PokemonCache;
+    pokemon: PokemonCache;
 }
 
 export default function PokeCard({ pokemon }: Props) {
-  if (pokemon.types && pokemon.types.length > 0) return <PokeSimpleCard pokemon={pokemon as any} />
-  return <PokemonRequestCard pokemon={pokemon} />
+    const types = pokemon.types;
+
+    if (!types) return <PokemonRequestCard pokemon={pokemon} />;
+    if (types && types.length === 0)
+        return <PokemonRequestCard pokemon={pokemon} />;
+
+    return <PokeSimpleCard pokemon={pokemon as any} />;
 }

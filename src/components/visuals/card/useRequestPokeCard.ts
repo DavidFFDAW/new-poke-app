@@ -10,27 +10,31 @@ export default function useRequestPokeCard(pokemon: PokemonCache) {
     });
 
     useEffect(() => {
-        apiService.getPokemonTypes(pokemon.id)
-            .then((types) => {
+        apiService
+            .getPokemonTypes(pokemon.name)
+            .then((details) => {
                 const data = {
-                    id: pokemon.id,
+                    id: details.id,
                     name: pokemon.name,
-                    types: types.map((type: any) => type.type.name),
-                }
+                    types: details.types.map((type: any) => type.type.name),
+                    sprite: details.sprites.front_default,
+                };
                 pokemonStorage.savePokemonDatas(data as any);
                 setCardState({
                     poke: data,
                     loading: false,
                 });
             })
-            .catch(() => setCardState({
-                poke: null,
-                loading: false,
-            }));
+            .catch(() =>
+                setCardState({
+                    poke: null,
+                    loading: false,
+                })
+            );
     }, [pokemon.id]);
 
     return {
         pokemon: cardState.poke,
         loading: cardState.loading,
-    }
+    };
 }

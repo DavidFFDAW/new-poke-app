@@ -69,7 +69,11 @@ export default function AppLayout() {
                 <HeaderSearchForm />
             </header>
 
-            <section className={`pokeViewport ${pathname.slice(1).replace(/\//g, "-")}`}>
+            <section
+                className={`pokeViewport ${pathname
+                    .slice(1)
+                    .replace(/\//g, "-")}`}
+            >
                 <Outlet />
             </section>
         </>

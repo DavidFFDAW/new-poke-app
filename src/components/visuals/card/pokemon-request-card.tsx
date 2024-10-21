@@ -1,6 +1,6 @@
-import { PokemonCache } from '../../../@types/global.pokemon'
-import PokeSimpleCard, { PokeCardLoading } from './poke-simple-card';
-import useRequestPokeCard from './useRequestPokeCard';
+import { PokemonCache } from "../../../@types/global.pokemon";
+import PokeSimpleCard, { PokeCardLoading } from "./poke-simple-card";
+import useRequestPokeCard from "./useRequestPokeCard";
 
 interface Props {
     pokemon: PokemonCache;
@@ -8,7 +8,7 @@ interface Props {
 
 export default function PokemonRequestCard({ pokemon }: Props) {
     const request = useRequestPokeCard(pokemon);
-    
-    if (request.loading) return <PokeCardLoading />
-    return <PokeSimpleCard pokemon={request.pokemon} />
+
+    if (request.loading || !request.pokemon) return <PokeCardLoading />;
+    return <PokeSimpleCard pokemon={request.pokemon} />;
 }
