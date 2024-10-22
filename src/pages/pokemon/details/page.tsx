@@ -1,5 +1,5 @@
 import SEOHead from "../../../components/seo/head";
-import PokemonDatas from "./PokemonDatas";
+import PokemonDatas from "./components/PokemonDatas/PokemonDatas";
 import usePokemonDetails from "./usePokemonDetails";
 import "./poke.details.css";
 

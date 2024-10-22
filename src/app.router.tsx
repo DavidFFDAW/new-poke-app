@@ -3,6 +3,7 @@ import AppLayout from "./pages/layout";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./assets/css/main.style.css";
 import "./app.default.css";
+import "./assets/css/media.queries.css";
 
 const HomePage = lazy(() => import("./pages/home/page"));
 const PokemonPage = lazy(() => import("./pages/pokemon/details/page"));

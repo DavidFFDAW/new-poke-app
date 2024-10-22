@@ -1,36 +1,109 @@
+.w1 {
+    width: 100%;
+}
+
 .flex {
     display: flex;
     align-items: center;
 }
+
 .flex.column {
     flex-direction: column;
 }
+
 .flex.gap {
     gap: 20px;
 }
+
 .flex.gap-sm {
     gap: 5px;
 }
+
 .flex.wrap {
     flex-wrap: wrap;
 }
+
 .noverflow {
     overflow: hidden;
 }
+
 .overflow-x {
     overflow-x: auto;
 }
+
 .overflow-y {
     overflow-y: auto;
 }
+
 .pokeViewport {
     margin-top: 80px;
     padding: 0;
 }
+
+.pokeViewport.pokemon-page {
+    margin-top: 0;
+    padding: 0;
+}
+
 .pokemon-page.pokemon-details-page .pokeViewport {
     margin-top: 0;
     background: transparent;
 }
+
 .pokemon-page.pokemon-details-page .pokeViewport .details-card {
     min-height: 200px;
+}
+
+.pokemon-moves-whole-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px
+}
+
+.pokemon-moves-whole-container .pokemon-moves-game-selector label {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.pokemon-moves-whole-container .pokemon-moves-game-selector select.game-select {
+    padding: 10px;
+    border: 1px solid #e64d4d;
+    outline: none;
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.pokemon-moves-whole-container .pokemon-moves-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pokemon-moves-whole-container .pokemon-moves-list table th {
+    background: #e64d4d;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 10px;
+    text-align: left;
+}
+
+.pokemon-moves-whole-container .pokemon-moves-list table td {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+}
+
+.pokemon-moves-whole-container .pokemon-moves-list table td.learning-method,
+.pokemon-moves-whole-container .pokemon-moves-list table td.level p {
+    text-align: center;
 }

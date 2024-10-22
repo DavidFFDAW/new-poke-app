@@ -1,10 +1,14 @@
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import HeaderSearchForm from "../components/visuals/header/search-form";
 import "../assets/css/header.css";
 
 export default function AppLayout() {
     const navigate = useNavigate();
+    const params = useParams();
     const { pathname } = useLocation();
+    const parsed = Object.entries(params).reduce((acc: string, [_, value]) => {
+        return acc.replace(`${value}`, "");
+    }, pathname).replace(/\//g, ' ').trim().replace(/\s+/g, '-').toLowerCase().concat("-page");
 
     const handleGoBack = () => {
         navigate(-1);
@@ -70,12 +74,9 @@ export default function AppLayout() {
             </header>
 
             <section
-                className={`pokeViewport ${pathname
-                    .slice(1)
-                    .replace(/\//g, "-")}`}
-            >
+                className={`pokeViewport ${parsed.startsWith('/') ? parsed.slice(1) : parsed}`}>
                 <Outlet />
-            </section>
+            </section >
         </>
     );
 }

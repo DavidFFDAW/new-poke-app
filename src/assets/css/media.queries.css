@@ -1,0 +1,59 @@
+@media only screen and (max-width: 768px) {
+    .pokemon-page.pokemon-details-page .pokeViewport .details-card {
+        width: 100%;
+        margin: 0;
+    }
+
+    .pokemon-page.pokemon-details-page .pokemon-datas-page {
+        padding: 0;
+        max-width: 100%;
+        margin-top: 20px;
+        padding: 0;
+        padding-top: 50px;
+    }
+
+    .pokemon-page.pokemon-details-page .pokemon-datas-page .details-text {
+        width: 100%;
+        margin: 0;
+    }
+
+    .pokemon-page.pokemon-details-page .pokemon-datas-page .details-text .rounded-box.first {
+        width: 100%;
+        margin: 0;
+    }
+
+    .pokemon-page.pokemon-details-page .pokemon-datas-page .flex-start.between {
+        width: 100%;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+
+    .flex.between.poke-header {
+        padding: 0 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .poke-header .back {
+        position: relative;
+        left: 0;
+        padding: 0;
+        top: 0;
+    }
+
+    .poke-header .input-div {
+        width: auto;
+        right: 0;
+        position: relative;
+        padding: 0;
+    }
+
+    .poke-header input.text-search {
+        max-width: 150px;
+    }
+}

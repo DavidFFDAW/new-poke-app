@@ -1,30 +1,15 @@
-import { useEffect, useState } from "react";
-import { SimpleRoundBox } from "../../../components/visuals/box/boxes";
-import PokemonMoves from "./components/PokemonMoves";
-import { PokemonAPIDetails } from "../../../@types/global.pokemon";
+import { SimpleRoundBox } from "../../../../../components/visuals/box/boxes";
+import PokemonMoves from "../Moves/PokemonMoves";
+import { PokemonAPIDetails } from "../../../../../@types/global.pokemon";
+import usePokemonDatas from "./usePokemonDatas";
 
 interface PokemonProps {
     pokemon: PokemonAPIDetails;
 }
 
 export default function PokemonDatas({ pokemon }: PokemonProps) {
-    const [isBottomPage, setIsBottomPage] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 1000) {
-                setIsBottomPage(true);
-            } else {
-                setIsBottomPage(false);
-            }
-        };
-
-        window.addEventListener("scroll", handleScroll);
-
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
+    const pageDatas = usePokemonDatas();
+    const image = pageDatas.isShiny ? pokemon.sprites.front_shiny : pokemon.sprites.front_default;
 
     return (
         <>
@@ -36,6 +21,9 @@ export default function PokemonDatas({ pokemon }: PokemonProps) {
                         marginBottom: "20px",
                     }}
                 >
+                    {/* <button type="button" className="btn btn-download" onClick={pageDatas.toggleShiny}>
+                        {pageDatas.isShiny ? "Normal" : "Shiny"}
+                    </button> */}
                     {/* { details.id !== 1 ? <CenteredButton text={ 'Pokemon anterior' } onclick={ _ => getNextOrPrevPokemon('prev') }></CenteredButton> : <div/> } */}
                     {/* <CenteredButton text={ 'Siguiente pokemon' } onclick={ _ => getNextOrPrevPokemon('next') }></CenteredButton> */}
                 </div>
@@ -44,10 +32,14 @@ export default function PokemonDatas({ pokemon }: PokemonProps) {
                         <div className="w-100">
                             <div className="details-card-img">
                                 <img
-                                    src={pokemon.sprites.front_default}
+                                    src={image}
                                     alt={pokemon.name}
                                 />
                             </div>
+
+                            <button type="button" className="btn btn-download" onClick={pageDatas.toggleShiny}>
+                                {pageDatas.isShiny ? "Normal" : "Shiny"}
+                            </button>
                         </div>
                     </div>
 
@@ -72,14 +64,14 @@ export default function PokemonDatas({ pokemon }: PokemonProps) {
                     </div>
                 </div>
 
-                {isBottomPage && (
+                {pageDatas.isBottomPage && (
                     <button
                         className="btn btn-download rd fix"
                         onClick={() =>
                             window.scrollTo({ top: 0, behavior: "smooth" })
                         }
                     >
-                        Volver arriba{" "}
+                        Volver arriba
                     </button>
                 )}
             </div>
