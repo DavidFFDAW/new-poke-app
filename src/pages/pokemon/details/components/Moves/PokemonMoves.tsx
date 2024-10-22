@@ -1,6 +1,5 @@
 import React from "react";
 import { PokemonAPIDetails } from "../../../../../@types/global.pokemon";
-import LearnWay from "./LearnWay";
 import MoveItem from "./MoveItem";
 
 interface PokemonMovesProps {
