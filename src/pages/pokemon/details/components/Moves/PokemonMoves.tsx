@@ -44,7 +44,7 @@ export default function PokemonMoves({ pokemon }: PokemonMovesProps) {
                         })}
                         {otherMoves.map((move, indx) => {
                             if (move.version !== currentGame) return null;
-                            return <MoveItem key={`${move.move}-${indx}`} move={move} />;
+                            return <MoveItem key={`${move.move}-${indx + levelMoves.length + 1}`} move={move} />;
                         })}
                     </tbody>
                 </table>
