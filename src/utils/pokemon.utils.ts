@@ -1,5 +1,6 @@
+import { EvolutionChain } from "../@types/api.evolutions";
 import { Mfe } from "../@types/api.pokemon";
-import { ParsedMove } from "../@types/global.pokemon";
+import { AppEvolution, ParsedMove } from "../@types/global.pokemon";
 import { typesRelation } from "../constants/types.config";
 
 export function getTransformedPokemonMoveDatas(moves: Mfe[]): ParsedMove[] {
@@ -27,6 +28,54 @@ export function getUniqueGamesFromMoves(moves: Mfe[]): string[] {
     );
 
     return Array.from(new Set(versions));
+}
+
+export function getPokemonEvolution(evolutions: EvolutionChain) {
+    console.log({
+        evolutions
+    });
+
+    let evoChain: AppEvolution[] = [];
+    let evoData = evolutions.chain;
+    const details = evoData.evolution_details[0];
+
+    do {
+        let numberOfEvolutions = evoData.evolves_to.length;
+
+        evoChain.push({
+            name: evoData.species.name,
+            level: !evoData ? 1 : details.min_level,
+            trigger: !evoData ? null : details.trigger.name,
+            item: details.item || null,
+            affection: details.min_affection,
+            happiness: details.min_happiness,
+            is_baby: evoData.is_baby,
+            id: Number(evoData.species.url.split('https://pokeapi.co/api/v2/pokemon-species/')[1].replace(/\\/g, '')),
+        });
+
+        if (numberOfEvolutions > 1) {
+            for (let i = 1; i < numberOfEvolutions; i++) {
+                const data = evoData.evolves_to[i];
+                const evoDetails = evoData.evolves_to[i].evolution_details[0];
+
+                evoChain.push({
+                    name: data.species.name,
+                    level: !data ? 1 : evoDetails.min_level,
+                    trigger: !data ? null : evoDetails.trigger.name,
+                    item: evoDetails.item || null,
+                    affection: evoDetails.min_affection,
+                    happiness: evoDetails.min_happiness,
+                    is_baby: data.is_baby,
+                    id: Number(data.species.url.split('https://pokeapi.co/api/v2/pokemon-species/')[1].replace(/\\/g, '')),
+                });
+            }
+        }
+
+        evoData = evoData.evolves_to[0];
+
+    } while (evoData != undefined && evoData.hasOwnProperty('evolves_to'));
+
+    return evoChain;
 }
 
 export function getTypeWeaknesses(types: string[]): string[] {

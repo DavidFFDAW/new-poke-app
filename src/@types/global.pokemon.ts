@@ -55,3 +55,14 @@ export interface PokemonAPIDetails extends APIPokemonDetails {
     specie: any;
     ctypes: string[];
 }
+
+export interface AppEvolution {
+    id: number;
+    name: string;
+    level: string | number | null;
+    trigger: string | null;
+    item: string | null;
+    affection: string | number | null;
+    happiness: string | number | null;
+    is_baby: boolean;
+}

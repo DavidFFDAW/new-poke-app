@@ -8,7 +8,7 @@ interface PokemonMovesProps {
 
 
 export default function PokemonMoves({ pokemon }: PokemonMovesProps) {
-    const [currentGame, setCurrentGame] = React.useState("diamond-pearl");
+    const [currentGame, setCurrentGame] = React.useState(pokemon.moveGames[0]);
     const levelMoves = pokemon.parsedMoves.filter(move => move.level_learning_method === "level-up");
     const otherMoves = pokemon.parsedMoves.filter(move => move.level_learning_method !== "level-up");
 
