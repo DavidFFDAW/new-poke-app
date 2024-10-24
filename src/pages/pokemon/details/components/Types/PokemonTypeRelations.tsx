@@ -8,11 +8,6 @@ interface Props {
 export default function PokemonTypeRelations({ types }: Props) {
     const relations = getTypeEffectiveness(types);
 
-    console.log({
-        relations
-    });
-
-
     return (
         <div className='w1 type-relations flex center astart gap'>
             <div className='type-strenghts flex column gap'>

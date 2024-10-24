@@ -1,13 +1,11 @@
 import { http } from "./http.service";
 import { endpoint, maxLimit } from "../constants/config";
 import {
-    getPokemonEvolution,
     getTransformedPokemonMoveDatas,
     getUniqueGamesFromMoves,
 } from "../utils/pokemon.utils";
 import { PokemonAPIDetails } from "../@types/global.pokemon";
 import { APIPokemonDetails } from "../@types/api.pokemon";
-import { EvolutionChain } from "../@types/api.evolutions";
 
 export const apiService = {
     getPokemons: () => {

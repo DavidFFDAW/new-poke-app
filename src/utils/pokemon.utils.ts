@@ -1,5 +1,5 @@
-import { EvolutionChain } from "../@types/api.evolutions";
 import { Mfe } from "../@types/api.pokemon";
+import { EvolutionChain } from "../@types/api.evolutions";
 import { AppEvolution, ParsedMove } from "../@types/global.pokemon";
 import { typesRelation } from "../constants/types.config";
 
@@ -31,10 +31,6 @@ export function getUniqueGamesFromMoves(moves: Mfe[]): string[] {
 }
 
 export function getPokemonEvolution(evolutions: EvolutionChain) {
-    console.log({
-        evolutions
-    });
-
     let evoChain: AppEvolution[] = [];
     let evoData = evolutions.chain;
     const details = evoData.evolution_details[0];
@@ -111,7 +107,7 @@ export function getTypeWeaknesses(types: string[]): string[] {
 export function getTypeStrengths(types: string[]): string[] {
     const attackTypes = types.filter(Boolean); // Filtrar tipos nulos o undefined
 
-    const combinedStrengths = types.reduce((acc: string[], type) => {
+    const combinedStrengths = attackTypes.reduce((acc: string[], type) => {
         if (!typesRelation[type]) return acc;
 
         // Combinar las fortalezas (double_damage_to) de ambos tipos
