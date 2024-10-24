@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function PokeAbilities({ abilities }: Props) {
-    const abilitiesList = abilities.map((ability, index) => {
+    const abilitiesList = abilities.map((ability) => {
         return {
             ...ability,
             customDatas: getPokemonAbility(ability.ability.name),
