@@ -4,6 +4,7 @@ import { PokemonAPIDetails } from "../../../../../@types/global.pokemon";
 import usePokemonDatas from "./usePokemonDatas";
 import PokeAbilities from "../Abilities/abilities";
 import PokemonTypeRelations from "../Types/PokemonTypeRelations";
+import { Link } from "react-router-dom";
 
 interface PokemonProps {
     pokemon: PokemonAPIDetails;
@@ -53,6 +54,18 @@ export default function PokemonDatas({ pokemon }: PokemonProps) {
 
                         <div className="abilities">
                             <PokeAbilities abilities={pokemon.abilities} />
+                        </div>
+
+                        <div className="w1 poke-egg-group poke-egg-group-block egg-groups flex center">
+                            <ul className="poke-egg-group-list flex column gap-sm">
+                                {pokemon.specie.egg_groups.map((eggGroup, index) => (
+                                    <li key={index} className="egg-group-item">
+                                        <Link to={`/pokemon/egg-group/${eggGroup.name}`} className="tag default-tag">
+                                            {eggGroup.name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
 
                         <div className="w1 types poke-types">

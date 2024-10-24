@@ -1,4 +1,5 @@
 import { APIPokemonDetails } from "./api.pokemon";
+import { PokemonSpecie } from "./api.specie";
 
 export type PokeType =
     | "normal"
@@ -52,7 +53,7 @@ export interface PokemonAPIDetails extends APIPokemonDetails {
     moveGames: string[];
     parsedMoves: ParsedMove[];
     evolutions: any;
-    specie: any;
+    specie: PokemonSpecie;
     ctypes: string[];
 }
 
