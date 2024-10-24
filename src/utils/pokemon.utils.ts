@@ -85,7 +85,7 @@ export function getTypeWeaknesses(types: string[]): string[] {
         if (!typesRelation[type]) return modifiers;
 
         // Procesar debilidades (x2)
-        typesRelation[type].weakTo.forEach(weakness => {
+        typesRelation[type].weakAgainst.forEach(weakness => {
             modifiers[weakness] = (modifiers[weakness] || 1) * 2;
         });
 
@@ -106,14 +106,26 @@ export function getTypeWeaknesses(types: string[]): string[] {
     return Object.keys(weaknessModifiers).filter(type => weaknessModifiers[type] > 1);
 }
 
+
+
 export function getTypeStrengths(types: string[]): string[] {
     const attackTypes = types.filter(Boolean); // Filtrar tipos nulos o undefined
 
-    const combinedStrengths = attackTypes.reduce((acc: string[], type) => {
-        if (!typesRelation[type]) return acc; // Si el tipo no existe en el attackChart, devolvemos el acumulador actual
+    const combinedStrengths = types.reduce((acc: string[], type) => {
+        if (!typesRelation[type]) return acc;
 
-        // Combinar las fortalezas de cada tipo sin duplicados
-        return [...new Set([...acc, ...typesRelation[type].strongAgainst])];
+        // Combinar las fortalezas (double_damage_to) de ambos tipos
+        const strengths = typesRelation[type].strongAgainst;
+        const weaknesses = typesRelation[type].notEffectiveAgainst;
+        const immunities = typesRelation[type].immuneTo;
+
+        // Filtrar fortalezas eliminando cualquier tipo que esté en las debilidades o inmunidades
+        const filteredStrengths = strengths.filter(
+            (t) => !weaknesses.includes(t) && !immunities.includes(t)
+        );
+
+        // Añadir los tipos fuertes al acumulador, eliminando duplicados
+        return [...new Set([...acc, ...filteredStrengths])];
     }, []);
 
     return combinedStrengths;

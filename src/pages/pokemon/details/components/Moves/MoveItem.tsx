@@ -1,10 +1,10 @@
 import { LearnWay } from ".";
 import { ParsedMove } from "../../../../../@types/global.pokemon";
 import NullableComponent from "../../../../../components/visuals/loaders/Nullable";
-import moves from "../../../../../lang/moves.json";
+import { getPokemonMove } from "../../../../../utils/pokemon.translate";
 
 export default function MoveItem({ move }: { move: ParsedMove }) {
-    const moveName = moves[move.move] || move.move;
+    const moveName = getPokemonMove(move.move);
 
     return (
         <tr className="pokemon-move-list-item tag default-tag">

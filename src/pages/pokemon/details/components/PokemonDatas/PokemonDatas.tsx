@@ -2,6 +2,8 @@ import { SimpleRoundBox } from "../../../../../components/visuals/box/boxes";
 import PokemonMoves from "../Moves/PokemonMoves";
 import { PokemonAPIDetails } from "../../../../../@types/global.pokemon";
 import usePokemonDatas from "./usePokemonDatas";
+import PokeAbilities from "../Abilities/abilities";
+import PokemonTypeRelations from "../Types/PokemonTypeRelations";
 
 interface PokemonProps {
     pokemon: PokemonAPIDetails;
@@ -10,6 +12,7 @@ interface PokemonProps {
 export default function PokemonDatas({ pokemon }: PokemonProps) {
     const pageDatas = usePokemonDatas();
     const image = pageDatas.isShiny ? pokemon.sprites.front_shiny : pokemon.sprites.front_default;
+    const backImage = pageDatas.isShiny ? pokemon.sprites.back_shiny : pokemon.sprites.back_default;
 
     return (
         <>
@@ -29,23 +32,47 @@ export default function PokemonDatas({ pokemon }: PokemonProps) {
                 </div>
                 <div className="flex-start between">
                     <div className="details-card flex-not-align center">
-                        <div className="w-100">
-                            <div className="details-card-img">
+                        <div className="w1 details-card-image-shiny-container">
+                            <div className="w1 details-card-img flex center gap">
                                 <img
                                     src={image}
-                                    alt={pokemon.name}
+                                    alt={`${pokemon.name} front view`}
+                                />
+                                <img
+                                    src={backImage}
+                                    alt={`${pokemon.name} back view`}
                                 />
                             </div>
 
-                            <button type="button" className="btn btn-download" onClick={pageDatas.toggleShiny}>
-                                {pageDatas.isShiny ? "Normal" : "Shiny"}
-                            </button>
+                            <div className="w1 flex center">
+                                <button type="button" className="btn btn-download" onClick={pageDatas.toggleShiny}>
+                                    {pageDatas.isShiny ? "Normal" : "Shiny"}
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="abilities">
+                            <PokeAbilities abilities={pokemon.abilities} />
+                        </div>
+
+                        <div className="w1 types poke-types">
+                            <ul className="flex center gap">
+                                {pokemon.types.map((type, index) => (
+                                    <li key={index} className={`poke-type poke-type-${type.type.name}`}>
+                                        {type.type.name}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
 
                     <div className="details-text flex column gap">
                         <SimpleRoundBox title="Información">
                             {pokemon.weight}
+                        </SimpleRoundBox>
+
+                        <SimpleRoundBox title="Debilidades y fortalezas">
+                            <PokemonTypeRelations types={pokemon.ctypes} />
                         </SimpleRoundBox>
 
                         <SimpleRoundBox title="Movimientos">

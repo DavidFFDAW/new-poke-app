@@ -66,3 +66,15 @@ export interface AppEvolution {
     happiness: string | number | null;
     is_baby: boolean;
 }
+
+export interface TypeRelations {
+    [name: string]: {
+        name: string;
+        weakAgainst: PokeType[];
+        resistTo: PokeType[];
+        strongAgainst: PokeType[];
+        immuneTo: PokeType[];
+        immuneFrom: PokeType[];
+        notEffectiveAgainst: PokeType[];
+    };
+}

@@ -2,6 +2,10 @@
     width: 100%;
 }
 
+.tcenter {
+    text-align: center;
+}
+
 .flex {
     display: flex;
     align-items: center;
@@ -9,6 +13,10 @@
 
 .flex.column {
     flex-direction: column;
+}
+
+.flex.astart {
+    align-items: flex-start;
 }
 
 .flex.gap {
@@ -52,6 +60,11 @@
 
 .pokemon-page.pokemon-details-page .pokeViewport .details-card {
     min-height: 200px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .pokemon-moves-whole-container {
@@ -93,6 +106,10 @@
     font-weight: 500;
     text-transform: uppercase;
     padding: 10px;
+    text-align: center;
+}
+
+.pokemon-moves-whole-container .pokemon-moves-list table th:nth-child(1) {
     text-align: left;
 }
 
@@ -106,4 +123,10 @@
 .pokemon-moves-whole-container .pokemon-moves-list table td.learning-method,
 .pokemon-moves-whole-container .pokemon-moves-list table td.level p {
     text-align: center;
+}
+
+.ability-effect-tooltip {
+    padding: 0;
+    margin: 0;
+    padding-left: 20px;
 }
