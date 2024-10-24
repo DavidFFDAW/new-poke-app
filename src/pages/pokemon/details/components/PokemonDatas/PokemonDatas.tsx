@@ -5,6 +5,7 @@ import usePokemonDatas from "./usePokemonDatas";
 import PokeAbilities from "../Abilities/abilities";
 import PokemonTypeRelations from "../Types/PokemonTypeRelations";
 import { Link } from "react-router-dom";
+import { getPokemonEggGroup } from "../../../../../utils/pokemon.translate";
 
 interface PokemonProps {
     pokemon: PokemonAPIDetails;
@@ -61,7 +62,7 @@ export default function PokemonDatas({ pokemon }: PokemonProps) {
                                 {pokemon.specie.egg_groups.map((eggGroup, index) => (
                                     <li key={index} className="egg-group-item">
                                         <Link to={`/pokemon/egg-group/${eggGroup.name}`} className="tag default-tag">
-                                            {eggGroup.name}
+                                            {getPokemonEggGroup(eggGroup.name)}
                                         </Link>
                                     </li>
                                 ))}

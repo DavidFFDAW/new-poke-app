@@ -1,5 +1,6 @@
 import abilities from '../lang/abilities.json';
 import moves from '../lang/moves.json';
+import eggGroups from '../lang/egg-groups.json';
 
 interface AbilityReturn {
     id: number;
@@ -17,6 +18,10 @@ export function getPokemonAbility(ability: string): AbilityReturn {
         en: ability
     }
     return foundAbility;
+}
+
+export function getPokemonEggGroup(eggGroup: string): string {
+    return eggGroups[eggGroup] || eggGroup;
 }
 
 export function getPokemonMove(move: string): string {
