@@ -1,11 +1,11 @@
-import { SimpleRoundBox } from "../../../../../components/visuals/box/boxes";
-import PokemonMoves from "../Moves/PokemonMoves";
-import { PokemonAPIDetails } from "../../../../../@types/global.pokemon";
-import usePokemonDatas from "./usePokemonDatas";
-import PokeAbilities from "../Abilities/abilities";
-import PokemonTypeRelations from "../Types/PokemonTypeRelations";
-import { Link } from "react-router-dom";
-import { getPokemonEggGroup } from "../../../../../utils/pokemon.translate";
+import { SimpleRoundBox } from '../../../../../components/visuals/box/boxes';
+import PokemonMoves from '../Moves/PokemonMoves';
+import { PokemonAPIDetails } from '../../../../../@types/global.pokemon';
+import usePokemonDatas from './usePokemonDatas';
+import PokeAbilities from '../Abilities/abilities';
+import PokemonTypeRelations from '../Types/PokemonTypeRelations';
+import { Link } from 'react-router-dom';
+import { getPokemonEggGroup } from '../../../../../utils/pokemon.translate';
 
 interface PokemonProps {
     pokemon: PokemonAPIDetails;
@@ -22,8 +22,8 @@ export default function PokemonDatas({ pokemon }: PokemonProps) {
                 <div
                     className="flex between"
                     style={{
-                        padding: "5px 50px",
-                        marginBottom: "20px",
+                        padding: '5px 50px',
+                        marginBottom: '20px',
                     }}
                 >
                     {/* <button type="button" className="btn btn-download" onClick={pageDatas.toggleShiny}>
@@ -36,19 +36,13 @@ export default function PokemonDatas({ pokemon }: PokemonProps) {
                     <div className="details-card flex-not-align center">
                         <div className="w1 details-card-image-shiny-container">
                             <div className="w1 details-card-img flex center gap">
-                                <img
-                                    src={image}
-                                    alt={`${pokemon.name} front view`}
-                                />
-                                <img
-                                    src={backImage}
-                                    alt={`${pokemon.name} back view`}
-                                />
+                                <img src={image} alt={`${pokemon.name} front view`} />
+                                <img src={backImage} alt={`${pokemon.name} back view`} />
                             </div>
 
                             <div className="w1 flex center">
                                 <button type="button" className="btn btn-download" onClick={pageDatas.toggleShiny}>
-                                    {pageDatas.isShiny ? "Normal" : "Shiny"}
+                                    {pageDatas.isShiny ? 'Normal' : 'Shiny'}
                                 </button>
                             </div>
                         </div>
@@ -81,9 +75,7 @@ export default function PokemonDatas({ pokemon }: PokemonProps) {
                     </div>
 
                     <div className="details-text flex column gap">
-                        <SimpleRoundBox title="Información">
-                            {pokemon.weight}
-                        </SimpleRoundBox>
+                        <SimpleRoundBox title="Información">{pokemon.weight}</SimpleRoundBox>
 
                         <SimpleRoundBox title="Debilidades y fortalezas">
                             <PokemonTypeRelations types={pokemon.ctypes} />
@@ -108,9 +100,7 @@ export default function PokemonDatas({ pokemon }: PokemonProps) {
                 {pageDatas.isBottomPage && (
                     <button
                         className="btn btn-download rd fix"
-                        onClick={() =>
-                            window.scrollTo({ top: 0, behavior: "smooth" })
-                        }
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                     >
                         Volver arriba
                     </button>
