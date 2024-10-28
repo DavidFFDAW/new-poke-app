@@ -9,7 +9,8 @@ interface Props {
 }
 
 export default function PokeSimpleCard({ pokemon }: Props) {
-    const shiny = Math.random() > 0.99;
+    // very low chance of a shiny pokemon appearing
+    const shiny = Math.random().toFixed(2) == "0.99";
 
     const changeImg =
         (id: number | string) => (e: React.MouseEvent<HTMLImageElement>) => {
