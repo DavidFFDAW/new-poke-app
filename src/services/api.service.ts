@@ -7,6 +7,7 @@ import {
 import { PokemonAPIDetails } from "../@types/global.pokemon";
 import { APIPokemonDetails } from "../@types/api.pokemon";
 import { PokemonSpecie } from "../@types/api.specie";
+import { APIEggGroupResponse } from "@/@types/api.egggroup";
 
 export const apiService = {
     getPokemons: () => {
@@ -22,11 +23,18 @@ export const apiService = {
             .get(`${endpoint}/pokemon/${uuid}`)
             .then((response) => response);
     },
+    getEggGroupDatas: async (
+        uuid: string | number
+    ): Promise<APIEggGroupResponse> => {
+        return http.get(`${endpoint}/egg-group/${uuid}`);
+    },
     getPokemonDetails: async (
         uuid: string | number
     ): Promise<PokemonAPIDetails> => {
         const pokemon = await await http.get(`${endpoint}/pokemon/${uuid}`);
-        const specie = await http.get(`${endpoint}/pokemon-species/${uuid}`) as PokemonSpecie;
+        const specie = (await http.get(
+            `${endpoint}/pokemon-species/${uuid}`
+        )) as PokemonSpecie;
         const evolutions = await http.get(specie.evolution_chain.url);
         const types = pokemon.types.map((type: any) => type.type.name);
         const parsedMoves = getTransformedPokemonMoveDatas(pokemon.moves);

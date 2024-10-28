@@ -79,3 +79,13 @@ export interface TypeRelations {
         notEffectiveAgainst: PokeType[];
     };
 }
+
+export interface TypePokeList {
+    list: {
+        id: number;
+        name: string;
+        url: string;
+        types?: string[];
+    }[];
+    showTypes?: boolean;
+}
