@@ -71,7 +71,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    gap: 10px
+    gap: 10px;
 }
 
 .pokemon-moves-whole-container .pokemon-moves-game-selector label {
@@ -129,4 +129,39 @@
     padding: 0;
     margin: 0;
     padding-left: 20px;
+}
+.poke-home-background.animate {
+    overflow: auto;
+    max-height: 800px;
+    opacity: 1;
+    filter: blur(1px) grayscale(0.5) brightness(0.7);
+    /* pointer-events: none; */
+    /* animation: homeBackground 8s infinite ease-in-out alternate; */
+}
+.poke-home-form {
+    background-color: #de8181;
+    padding: 30px 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.poke-home-background.animate .pokemons-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* pointer-events: none; */
+    /* animation: homeBackground 2s infinite ease-in-out alternate; */
+}
+.poke-home-background.animate::-webkit-scrollbar {
+    width: 0;
+}
+
+@keyframes homeBackground {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-20%);
+    }
 }

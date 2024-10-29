@@ -1,21 +1,35 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { pokemonStorage } from "../../services/pokemon.storage.service";
 import { apiService } from "../../services/api.service";
 import { PokeList } from "../../@types/api.pokemon.ts";
+import { PokemonCache } from "@/@types/global.pokemon.ts";
 
 export default function useHome() {
-    const cache = pokemonStorage.getPokemonCache();
+    const [homePokemons, setHomePokemons] = useState<PokemonCache[]>([]);
 
     useEffect(() => {
+        const cache = pokemonStorage.getPokemonCache();
+        if (cache && cache.length > 0) {
+            setHomePokemons(cache);
+        }
+
         if (!cache || cache.length === 0) {
             apiService.getPokemons().then((pokemons: PokeList[]) => {
-                pokemonStorage.savePokemonCache(pokemons.map((pokemon) => ({
+                const parsedPokemons = pokemons.map((pokemon) => ({
                     ...pokemon,
-                    id: pokemon.url.split('https://pokeapi.co/api/v2/pokemon/')[1].replace('/', '')
-                })));
+                    id: Number(
+                        pokemon.url
+                            .split("https://pokeapi.co/api/v2/pokemon/")[1]
+                            .replace(/\//g, "")
+                    ),
+                }));
+                pokemonStorage.savePokemonCache(parsedPokemons);
+                setHomePokemons(parsedPokemons);
             });
         }
     }, []);
 
-    return {};
+    return {
+        homePokemons,
+    };
 }
