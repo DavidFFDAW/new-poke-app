@@ -16,6 +16,10 @@ export default function PokemonDatas({ pokemon }: PokemonProps) {
     const image = pageDatas.isShiny ? pokemon.sprites.front_shiny : pokemon.sprites.front_default;
     const backImage = pageDatas.isShiny ? pokemon.sprites.back_shiny : pokemon.sprites.back_default;
 
+    const eggGroups = pokemon.specie.egg_groups.map(egg => ({
+        ...egg, name: getPokemonEggGroup(egg.name)
+    }));
+
     return (
         <>
             <div className="pokemon-datas-page">
@@ -53,10 +57,10 @@ export default function PokemonDatas({ pokemon }: PokemonProps) {
 
                         <div className="w1 poke-egg-group poke-egg-group-block egg-groups flex center">
                             <ul className="poke-egg-group-list flex column gap-sm">
-                                {pokemon.specie.egg_groups.map((eggGroup, index) => (
+                                {eggGroups.map((eggGroup, index) => (
                                     <li key={index} className="egg-group-item">
                                         <Link to={`/pokemon/egg-group/${eggGroup.name}`} className="tag default-tag">
-                                            {getPokemonEggGroup(eggGroup.name)}
+                                            {eggGroup.name}
                                         </Link>
                                     </li>
                                 ))}

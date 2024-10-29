@@ -9,6 +9,16 @@ interface AbilityReturn {
     en: string;
 }
 
+interface MoveReturn {
+    name: string;
+    type: string;
+    power: string;
+    attackType: string;
+    pp: string;
+    accuracy: string;
+    effect: string;
+}
+
 export function getPokemonAbility(ability: string): AbilityReturn {
     const foundAbility = abilities[ability];
     if (!foundAbility) return {
@@ -24,6 +34,17 @@ export function getPokemonEggGroup(eggGroup: string): string {
     return eggGroups[eggGroup] || eggGroup;
 }
 
-export function getPokemonMove(move: string): string {
-    return moves[move] || move;
+export function getPokemonMove(move: string): MoveReturn {
+    const foundMove = moves[move];
+    if (foundMove) return foundMove;
+
+    return {
+        name: move,
+        type: '',
+        power: '',
+        attackType: '',
+        pp: '',
+        accuracy: '',
+        effect: ''
+    };
 }

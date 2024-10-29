@@ -1,15 +1,15 @@
 import { LearnWay } from ".";
-import { ParsedMove } from "../../../../../@types/global.pokemon";
-import NullableComponent from "../../../../../components/visuals/loaders/Nullable";
-import { getPokemonMove } from "../../../../../utils/pokemon.translate";
+import { getPokemonMove } from "@/utils/pokemon.translate";
+import { ParsedMove } from "@/@types/global.pokemon";
+import NullableComponent from "@/components/visuals/loaders/Nullable";
 
 export default function MoveItem({ move }: { move: ParsedMove }) {
-    const moveName = getPokemonMove(move.move);
+    const moveDatas = getPokemonMove(move.move);
 
     return (
-        <tr className="pokemon-move-list-item tag default-tag">
+        <tr className="pokemon-move-list-item tag default-tag" data-learn={move.level_learning_method} data-level={move.level_learned_at}>
             <td>
-                <h4 lang="es" translate="no" data-original-name={move.move}>{moveName}</h4>
+                <h4 lang="es" translate="no" data-original-name={move.move}>{moveDatas.name}</h4>
             </td>
 
             <td colSpan={move.level_learning_method === "level-up" ? 1 : 2} className="learning-method">

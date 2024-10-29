@@ -1,6 +1,7 @@
 import React from "react";
 import { PokemonAPIDetails } from "../../../../../@types/global.pokemon";
 import MoveItem from "./MoveItem";
+import NullableComponent from "@/components/visuals/loaders/Nullable";
 
 interface PokemonMovesProps {
     pokemon: PokemonAPIDetails;
@@ -9,8 +10,10 @@ interface PokemonMovesProps {
 
 export default function PokemonMoves({ pokemon }: PokemonMovesProps) {
     const [currentGame, setCurrentGame] = React.useState(pokemon.moveGames[0]);
+    const [tableTab, setTableTab] = React.useState<string>("level");
+    const eggMoves = pokemon.parsedMoves.filter(move => move.level_learning_method === "egg");
     const levelMoves = pokemon.parsedMoves.filter(move => move.level_learning_method === "level-up");
-    const otherMoves = pokemon.parsedMoves.filter(move => move.level_learning_method !== "level-up");
+    const machineMoves = pokemon.parsedMoves.filter(move => move.level_learning_method === "machine");
 
     return (
         <div className="pokemon-moves-whole-container">
@@ -27,6 +30,18 @@ export default function PokemonMoves({ pokemon }: PokemonMovesProps) {
 
             <div className="pokemon-moves-list">
                 {/* <ul className="pokemon-moves-list-inner flex gap-sm wrap"> */}
+                <div className="flex gap-sm">
+                    <button className={`btn btn-tab ${tableTab === "level" ? "active" : ""}`} onClick={() => setTableTab("level")}>
+                        Nivel
+                    </button>
+                    <button className={`btn btn-tab ${tableTab === "machine" ? "active" : ""}`} onClick={() => setTableTab("machine")}>
+                        Máquina
+                    </button>
+                    <button className={`btn btn-tab ${tableTab === "egg" ? "active" : ""}`} onClick={() => setTableTab("egg")}>
+                        Huevo
+                    </button>
+                </div>
+
                 <table>
                     <thead>
                         <tr>
@@ -37,14 +52,26 @@ export default function PokemonMoves({ pokemon }: PokemonMovesProps) {
                     </thead>
 
                     <tbody>
-                        {levelMoves.map((move, indx) => {
-                            if (move.version !== currentGame) return null;
-                            return <MoveItem key={`${move.move}-${indx}`} move={move} />;
-                        })}
-                        {otherMoves.map((move, indx) => {
-                            if (move.version !== currentGame) return null;
-                            return <MoveItem key={`${move.move}-${indx + levelMoves.length + 1}`} move={move} />;
-                        })}
+                        <NullableComponent condition={tableTab === "level"}>
+                            {levelMoves.map((move, indx) => {
+                                if (move.version !== currentGame) return null;
+                                return <MoveItem key={`${move.move}-${indx}`} move={move} />;
+                            })}
+                        </NullableComponent>
+
+                        <NullableComponent condition={tableTab === "machine"}>
+                            {machineMoves.map((move, indx) => {
+                                if (move.version !== currentGame) return null;
+                                return <MoveItem key={`${move.move}-${indx + levelMoves.length + 1}`} move={move} />;
+                            })}
+                        </NullableComponent>
+
+                        <NullableComponent condition={tableTab === "egg"}>
+                            {eggMoves.map((move, indx) => {
+                                if (move.version !== currentGame) return null;
+                                return <MoveItem key={`${move.move}-${indx + levelMoves.length + machineMoves.length + 1}`} move={move} />;
+                            })}
+                        </NullableComponent>
                     </tbody>
                 </table>
             </div>
