@@ -9,7 +9,7 @@ export default function MoveItem({ move }: { move: ParsedMove }) {
     return (
         <tr className="pokemon-move-list-item tag default-tag" data-learn={move.level_learning_method} data-level={move.level_learned_at}>
             <td>
-                <h4 lang="es" translate="no" data-original-name={move.move}>{moveDatas.name}</h4>
+                <h4 title={moveDatas.effect} lang="es" translate="no" data-original-name={move.move}>{moveDatas.name}</h4>
             </td>
 
             <td colSpan={move.level_learning_method === "level-up" ? 1 : 2} className="learning-method">
