@@ -2,6 +2,7 @@ import { LearnWay } from ".";
 import { getPokemonMove } from "@/utils/pokemon.translate";
 import { ParsedMove } from "@/@types/global.pokemon";
 import NullableComponent from "@/components/visuals/loaders/Nullable";
+import PokeType from "@/components/visuals/types/PokeType";
 
 export default function MoveItem({ move }: { move: ParsedMove }) {
     const moveDatas = getPokemonMove(move.move);
@@ -14,6 +15,18 @@ export default function MoveItem({ move }: { move: ParsedMove }) {
 
             <td className="learning-method">
                 <LearnWay move={move} />
+            </td>
+
+            <NullableComponent condition={move.level_learning_method === "level-up"}>
+                <td className="level">
+                    <p className="level-way" translate="no">
+                        <span>{move.level_learned_at}</span>
+                    </p>
+                </td>
+            </NullableComponent>
+
+            <td data-item="poder" className="tcenter">
+                <PokeType type={moveDatas.type} />
             </td>
 
             <td data-item="poder" className="tcenter">
@@ -32,13 +45,7 @@ export default function MoveItem({ move }: { move: ParsedMove }) {
                 <p>{moveDatas.attackType}</p>
             </td>
 
-            <NullableComponent condition={move.level_learning_method === "level-up"}>
-                <td className="level">
-                    <p className="level-way" translate="no">
-                        <span>{move.level_learned_at}</span>
-                    </p>
-                </td>
-            </NullableComponent>
+
         </tr>
     );
 }
