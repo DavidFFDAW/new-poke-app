@@ -1,32 +1,16 @@
-import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { pokemonStorage } from "../../../services/pokemon.storage.service";
+import { useSearch } from "@/hooks/useSearch";
+import { useParams } from "react-router-dom";
 
 export default function HeaderSearchForm() {
-    const navigate = useNavigate();
     const params = useParams();
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const form = e.currentTarget;
-        const datas = new FormData(form);
-        const search = datas.get("search") as string;
-        if (!search) return;
-
-        const pokemonExistsInCache = pokemonStorage.isStoredPokemon(search);
-        if (pokemonExistsInCache) return navigate(`/pokemon/${search}`);
-
-        if (Number.isInteger(search)) return navigate(`/pokemon/${search}`);
-
-        return navigate(`/pokemon/search/${search}`);
-    };
+    const { handleFormSearch } = useSearch();
 
     return (
         <form
             className="last input-div"
             action=""
             method="get"
-            onSubmit={handleSubmit}
+            onSubmit={handleFormSearch}
         >
             <input
                 className="text-search"

@@ -7,13 +7,29 @@ export default function MoveItem({ move }: { move: ParsedMove }) {
     const moveDatas = getPokemonMove(move.move);
 
     return (
-        <tr className="pokemon-move-list-item tag default-tag" data-learn={move.level_learning_method} data-level={move.level_learned_at}>
+        <tr title={moveDatas.effect} className="pokemon-move-list-item tag default-tag" data-learn={move.level_learning_method} data-level={move.level_learned_at}>
             <td>
-                <h4 title={moveDatas.effect} lang="es" translate="no" data-original-name={move.move}>{moveDatas.name}</h4>
+                <h4 lang="es" translate="no" data-original-name={move.move}>{moveDatas.name}</h4>
             </td>
 
-            <td colSpan={move.level_learning_method === "level-up" ? 1 : 2} className="learning-method">
+            <td className="learning-method">
                 <LearnWay move={move} />
+            </td>
+
+            <td data-item="poder" className="tcenter">
+                <p>{moveDatas.power || "--"}</p>
+            </td>
+
+            <td data-item="precision" className="tcenter">
+                <p>{moveDatas.accuracy || "--"}</p>
+            </td>
+
+            <td data-item="pp" className="tcenter">
+                <p>{moveDatas.pp}</p>
+            </td>
+
+            <td data-item="clase" className="tcenter">
+                <p>{moveDatas.attackType}</p>
             </td>
 
             <NullableComponent condition={move.level_learning_method === "level-up"}>

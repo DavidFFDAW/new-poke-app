@@ -15,18 +15,18 @@ export default function PokeAbilities({ abilities }: Props) {
     });
 
     return (
-        <div className='abilites-block abilities poke-abilities flex column gap-sm'>
+        <div className='abilites-block abilities poke-abilities flex astart column gap-sm'>
             <h3 className='w1'>Habilidades</h3>
-            <ul className='abilities flex column gap'>
+            <ul className='w1 abilities flex column gap'>
                 {abilitiesList.map((ability) => {
                     return (
-                        <li key={ability.customDatas.id} className='ability flexc column gap-sm'>
-                            <div className='tag default-tag ability-name'>{ability.customDatas.name}
+                        <li key={ability.customDatas.id} className='w1 ability flex astart column gap-sm'>
+                            <div className='w1 tag default-tag ability-name'>{ability.customDatas.name}
                                 <NullableComponent condition={ability.is_hidden}>
                                     <span className='ability-hidden'> (Oculta)</span>
                                 </NullableComponent>
                             </div>
-                            <p className='ability-effect-tooltip'>{ability.customDatas.effect}</p>
+                            <p className='w1 ability-effect-tooltip'>{ability.customDatas.effect}</p>
                         </li>
                     )
                 })}

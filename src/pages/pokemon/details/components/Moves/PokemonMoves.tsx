@@ -47,7 +47,13 @@ export default function PokemonMoves({ pokemon }: PokemonMovesProps) {
                         <tr>
                             <th>Movimiento</th>
                             <th>Método</th>
-                            <th>Nivel</th>
+                            <th>Poder</th>
+                            <th>Precisión</th>
+                            <th>PP</th>
+                            <th>Clase</th>
+                            <NullableComponent condition={tableTab === "level"}>
+                                <th>Nivel</th>
+                            </NullableComponent>
                         </tr>
                     </thead>
 

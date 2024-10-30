@@ -73,10 +73,11 @@ export default function AppLayout() {
                 <HeaderSearchForm />
             </header>
 
-            <section
+            <main
+                id="page"
                 className={`pokeViewport ${parsed.startsWith('/') ? parsed.slice(1) : parsed}`}>
                 <Outlet />
-            </section >
+            </main >
         </>
     );
 }

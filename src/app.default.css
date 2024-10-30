@@ -2,51 +2,60 @@
     display: flex;
     align-items: center;
 }
+
 .flex-not-align {
     display: flex;
 }
+
 .flex-strt {
     display: flex;
     justify-content: flex-start;
 }
+
 .flex-start {
     display: flex;
     align-items: flex-start;
     place-items: flex-start;
 }
+
 .flex.center {
     justify-content: center;
 }
+
 .flex-not-align.center {
     justify-content: center;
 }
+
 .flex.between {
     justify-content: space-between;
 }
+
 .flex-start.between {
     justify-content: space-between;
 }
+
 .vertical-center {
     box-sizing: border-box;
     padding: 25px 0;
 }
-.vertical-center-50 {
-    box-sizing: border-box;
-    padding: 50px 0;
-}
+
 .down {
     margin-top: 25px;
 }
+
 .flxwrap {
     flex-wrap: wrap;
 }
+
 .w-100 {
     width: 100%;
     min-width: 100%;
 }
+
 .all-margins * {
     margin: 0 5px;
 }
+
 .grid-types {
     max-width: 75%;
     display: flex;
@@ -54,21 +63,23 @@
     flex-wrap: wrap;
     flex-direction: row;
 }
+
 .grid-types .poke-type-tag {
     margin: 0px;
 }
+
 .center-fix {
     position: fixed;
-    top: 0;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, 150%);
-    min-width: 80%;
-    min-height: 25%;
+    transform: translate(-50%, -50%);
 }
+
 .zindex {
     z-index: 99;
     width: 50%;
 }
+
 /* .bg-red {
     position: absolute;
     background-color: #de8181;
@@ -90,10 +101,12 @@
     border-radius: 20px;
     transition: all 0.2s;
 }
+
 input.inpt-pad {
     box-sizing: border-box;
     padding: 20px;
 }
+
 .btn {
     padding: 8px 20px;
     text-decoration: none;
@@ -107,17 +120,21 @@ input.inpt-pad {
     transition: all 0.2s;
     cursor: pointer;
 }
+
 .btn-group {
     margin: 10px 0;
     display: flex;
     justify-content: center;
 }
+
 .btn-group .btn {
     border-radius: 0;
 }
+
 .btn-group .btn:first-child {
     border-radius: 30px 0 0 30px;
 }
+
 .btn-group .btn:last-child {
     border-radius: 0 30px 30px 0;
 }
@@ -126,9 +143,11 @@ input.inpt-pad {
     background-color: #e64d4d;
     color: #fff;
 }
+
 .btn.btn-download.rd {
     border-radius: 30px;
 }
+
 .btn.btn-download:hover {
     background-color: #722525;
 }
@@ -138,12 +157,14 @@ input.inpt-pad {
     color: #3a3939;
     font-size: 40px;
 }
+
 .error strong {
     color: #e64d4d;
     font-size: 45px;
     font-weight: bold;
     text-transform: capitalize;
 }
+
 .title {
     margin: 0;
     margin-top: -15px;
@@ -152,6 +173,7 @@ input.inpt-pad {
     font-weight: bold;
     text-transform: uppercase;
 }
+
 .title.box-title::after {
     content: " ";
     position: absolute;
@@ -163,6 +185,7 @@ input.inpt-pad {
     border-bottom: 3px solid rgba(0, 0, 0, 0.2);
     transform: translate(-50%, -50%);
 }
+
 .poke-type-tag {
     padding: 10px 20px;
     border-radius: 30px;
@@ -173,6 +196,7 @@ input.inpt-pad {
     margin: 0 5px;
     cursor: pointer;
 }
+
 .poke-type-tag.small {
     cursor: pointer;
     padding: 4px 10px;
@@ -182,6 +206,7 @@ input.inpt-pad {
     font-weight: bold;
     margin: 0 5px;
 }
+
 .tag {
     padding: 4px 10px;
     border-radius: 30px;
@@ -192,13 +217,16 @@ input.inpt-pad {
     cursor: pointer;
     transition: all 0.2s;
 }
+
 .default-tag {
     color: #3a3939;
     background: #dddcdc;
 }
+
 .default-tag:hover {
     background: #bdbdbd;
 }
+
 .tag.default-tag.active {
     background: #e64d4d;
     color: #fff;
@@ -214,13 +242,16 @@ input.inpt-pad {
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+
 .rounded-box.first {
     margin: 0 auto;
 }
+
 .rounded-box .body {
     box-sizing: border-box;
     padding: 20px 0;
 }
+
 .footer {
     background: #e64d4d;
     width: 100%;
@@ -231,10 +262,12 @@ input.inpt-pad {
     padding: 5px;
     z-index: 100;
 }
+
 .footer a {
     text-decoration: none;
     color: #fff;
 }
+
 .relative {
     position: relative;
 }
@@ -245,6 +278,7 @@ input.inpt-pad {
     box-shadow: 0 0 10px rgba(27, 27, 27, 0.164);
     margin: 25px 15px;
 }
+
 .card:hover {
     box-shadow: 0 0 30px rgba(27, 27, 27, 0.164);
     transition: all 0.2s;
@@ -254,56 +288,60 @@ input.inpt-pad {
     .flex {
         flex-wrap: wrap;
     }
+
     .flex-start {
         flex-wrap: wrap;
     }
+
     .flex.footer {
         flex-wrap: nowrap;
         padding: 0;
         font-size: 15px;
         font-weight: bold;
     }
+
     .all-margins * {
         margin: 0;
         padding: 5px;
     }
+
     .all-margins {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
     }
-    .details-card {
-        width: 80%;
-        margin: auto;
-        margin-bottom: 50px;
-        margin-top: 20px;
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-    }
+
     .details-text {
         width: 100%;
         margin: 0 auto;
     }
+
     .rounded-box {
         width: 90%;
         margin: 20px auto;
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
     }
+
     .header-home-link {
         display: none;
     }
+
     .pokeViewport {
         padding-top: 90px;
         padding-bottom: 90px;
     }
+
     .poke-header .last,
     .poke-header:first-child {
         padding: 0;
     }
+
     .flex.between.poke-header {
         justify-content: flex-end;
         align-items: center;
     }
+
     .poke-header .input-div {
         width: 60%;
         position: absolute;
@@ -311,44 +349,54 @@ input.inpt-pad {
         top: 0;
         padding: 8% 0;
     }
+
     .poke-header input.text-search {
         width: 30%;
     }
+
     .poke-header .back {
         position: absolute;
         top: 0;
         left: 10px;
     }
+
     .pokemon-card-one {
         display: block;
         width: 100%;
         margin: 0 auto;
     }
+
     .poke-detail-card {
         padding: 20px 30px;
         width: 75%;
         margin: 35px auto;
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
     }
+
     .grid-types {
         display: grid;
         grid-template-columns: 50% 50%;
         width: 100%;
         max-width: 100%;
     }
+
     .center-fix {
         transform: translate(-50%, 40%);
     }
+
     .btn-group {
         flex-direction: column;
     }
+
     .btn-group .btn {
         border-radius: 0 !important;
         margin: 2px 0;
     }
+
     .bg-red {
         height: 350px;
     }
+
     .poke-header .dropdown {
         display: none;
     }

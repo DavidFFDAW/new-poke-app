@@ -25,7 +25,7 @@ export default function PokemonPage() {
                     <h1 translate="no">{uuid}</h1>
                 </div>
 
-                <div className="pokeViewport">
+                <div className="pokemon-details-content-wrapper-container">
                     {pokemon ? <PokemonDatas pokemon={pokemon} /> : null}
                     {loading && <p>Loading...</p>}
                 </div>

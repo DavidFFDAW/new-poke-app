@@ -1,5 +1,5 @@
 @media only screen and (max-width: 768px) {
-    .pokemon-page.pokemon-details-page .pokeViewport .details-card {
+    .pokemon-page.pokemon-details-page .details-card {
         width: 100%;
         margin: 0;
     }
