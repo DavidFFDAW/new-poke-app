@@ -7,6 +7,7 @@ import PokemonTypeRelations from '../Types/PokemonTypeRelations';
 import { Link } from 'react-router-dom';
 import { getPokemonEggGroup } from '../../../../../utils/pokemon.translate';
 import PokeImage from '@/components/visuals/images/PokeImage';
+import PokeType from '@/components/visuals/types/PokeType';
 
 interface PokemonProps {
     pokemon: PokemonAPIDetails;
@@ -73,8 +74,8 @@ export default function PokemonDatas({ pokemon }: PokemonProps) {
                             <h3 className="w1">Tipos</h3>
                             <ul className="flex center gap">
                                 {pokemon.types.map((type, index) => (
-                                    <li key={index} className={`poke-type poke-type-${type.type.name}`}>
-                                        {type.type.name}
+                                    <li key={index} className="poke-type-item">
+                                        <PokeType type={type.type.name} />
                                     </li>
                                 ))}
                             </ul>

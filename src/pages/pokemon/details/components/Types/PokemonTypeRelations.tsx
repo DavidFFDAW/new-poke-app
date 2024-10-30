@@ -1,3 +1,4 @@
+import PokeType from '@/components/visuals/types/PokeType';
 import NullableComponent from '../../../../../components/visuals/loaders/Nullable';
 import { getTypeEffectiveness } from '../../../../../utils/pokemon.type.utils';
 
@@ -15,8 +16,8 @@ export default function PokemonTypeRelations({ types }: Props) {
                 <ul className='flex column gap-sm'>
                     {relations.strengths.map((type, index) => {
                         return (
-                            <li key={index} className={`w1 poke-type poke-type-${type} tcenter`}>
-                                {type}
+                            <li key={index} className="poke-type-relation-inner">
+                                <PokeType type={type} />
                             </li>
                         )
                     })}
@@ -28,8 +29,8 @@ export default function PokemonTypeRelations({ types }: Props) {
                 <ul className='flex column gap-sm'>
                     {relations.weaknesses.map((type, index) => {
                         return (
-                            <li key={index} className={`w1 poke-type poke-type-${type} tcenter`}>
-                                {type}
+                            <li key={index} className="poke-type-relation-inner">
+                                <PokeType type={type} />
                             </li>
                         )
                     })}
@@ -42,8 +43,8 @@ export default function PokemonTypeRelations({ types }: Props) {
                     <ul className='flex column gap-sm'>
                         {relations.immunities.map((type, index) => {
                             return (
-                                <li key={index} className={`w1 poke-type poke-type-${type} tcenter`}>
-                                    {type}
+                                <li key={index} className="poke-type-relation-inner">
+                                    <PokeType type={type} />
                                 </li>
                             )
                         })}
