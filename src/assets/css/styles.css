@@ -93,6 +93,12 @@ button {
     border-radius: 5px;
 }
 
+.poke-type span.type {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
 .poke-type-fire {
     background: linear-gradient(#f7c757, #d44646 80%);
     color: #fff;

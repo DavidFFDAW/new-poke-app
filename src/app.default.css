@@ -1,3 +1,25 @@
+@font-face {
+    font-family: "violet";
+    src: url("/fonts/sony-sketch.ttf");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "avenir";
+    src: url("/fonts/avenir.ttf");
+    font-style: normal;
+    font-weight: 400;
+}
+
+.violet {
+    font-family: "violet";
+}
+
+.avenir {
+    font-family: "avenir";
+}
+
 .flex {
     display: flex;
     align-items: center;
@@ -184,6 +206,11 @@ input.inpt-pad {
     margin-top: -10px;
     border-bottom: 3px solid rgba(0, 0, 0, 0.2);
     transform: translate(-50%, -50%);
+}
+
+.rounded-box .title {
+    font-size: 25px;
+    font-family: "violet";
 }
 
 .poke-type-tag {

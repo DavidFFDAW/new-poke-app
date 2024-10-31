@@ -113,16 +113,16 @@ export default function PokemonDatas({ pokemon }: PokemonProps) {
 
                         <SimpleRoundBox title="Diferencias de sexo">
                             <h3 className='w1 tcenter'>{pokemon.name} {pokemon.specie.has_gender_differences ? 'tiene' : 'no tiene'} diferencias de género.</h3>
-                            <div className='flex center'>
+                            <div className='flex center gender-sex-differences'>
                                 <div className='card'>
                                     <PokeImage width={300} className="gender" data-src={images.home.male.front} src={images.home.male.front} alt={`${pokemon.name} male front image`} shiny={pageDatas.isShiny} />
-                                    <p style={{ textAlign: 'center' }}>Masculino</p>
+                                    {pokemon.specie.has_gender_differences ? <p className='tcenter'>Masculino</p> : null}
                                 </div>
 
                                 <NullableComponent condition={pokemon.specie.has_gender_differences}>
                                     <div className='card'>
                                         <PokeImage width={300} className="gender" data-src={images.home.female.front} src={images.home.female.front} alt={`${pokemon.name} female front image`} shiny={pageDatas.isShiny} />
-                                        <p style={{ textAlign: 'center' }}>Femenino</p>
+                                        <p className='tcenter'>Femenino</p>
                                     </div>
                                 </NullableComponent>
                             </div>

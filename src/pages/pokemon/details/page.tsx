@@ -23,7 +23,7 @@ export default function PokemonPage() {
                     className="flex center details-title-name bg-top"
                     translate="no"
                 >
-                    <h1 translate="no">{uuid}</h1>
+                    <h1 translate="no" className="violet">{uuid}</h1>
                 </div>
 
                 <div className="pokemon-details-content-wrapper-container">

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { typesTranslate } from "@/constants/config";
 
 export interface PokeTypeProps {
@@ -6,10 +7,8 @@ export interface PokeTypeProps {
 
 export default function PokeType({ type }: PokeTypeProps) {
     return (
-        <div className={`poke-type poke-type-${type}`}>
-            <span className="type">{
-                typesTranslate[type] || type
-            }</span>
-        </div>
+        <Link to={`/pokemon/type/${type}`} className={`poke-type poke-type-${type}`} title={type}>
+            <span className="type">{typesTranslate[type] || type}</span>
+        </Link>
     )
 }

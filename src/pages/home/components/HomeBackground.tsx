@@ -1,6 +1,7 @@
 import { PokemonCache } from "@/@types/global.pokemon";
 import PokeImage from "@/components/visuals/images/PokeImage";
 import { getIsShinyProbability } from "@/utils/shiny.util";
+import { Link } from "react-router-dom";
 
 interface Props {
     pokemons: PokemonCache[];
@@ -23,14 +24,15 @@ export default function HomeBackgroundPokemons({ pokemons }: Props) {
         <div className="poke-home-background animate">
             <div className="pokemons-wrapper">
                 {randomPokemons.map((pokemon) => (
-                    <PokeImage
-                        key={pokemon.id}
-                        width={200}
-                        height={200}
-                        shiny={pokemon.shiny}
-                        src={pokemon.image}
-                        alt={pokemon.name}
-                    />
+                    <Link key={pokemon.id} to={`/pokemon/${pokemon.name}`} className="pokemon-link">
+                        <PokeImage
+                            width={200}
+                            height={200}
+                            shiny={pokemon.shiny}
+                            src={pokemon.image}
+                            alt={pokemon.name}
+                        />
+                    </Link>
                 ))}
             </div>
         </div>

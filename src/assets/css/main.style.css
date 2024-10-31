@@ -53,6 +53,19 @@
     padding: 0;
 }
 
+.pokemon-datas-page .grid.type-relation-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+}
+
+.pokemon-datas-page .type-relations .single-type-relation {
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
 .pokemon-moves-list .btn.btn-tab.active {
     border-radius: 10px 10px 0 0;
     background: #e64d4d;
@@ -222,6 +235,10 @@
     background-repeat: no-repeat;
     background-position: bottom;
     z-index: 1;
+}
+
+.gender-sex-differences .poke-image.pokemon-simple-image.pokemon-is-shiny {
+    border-radius: 0;
 }
 
 @keyframes spin {

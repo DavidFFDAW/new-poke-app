@@ -65,7 +65,7 @@ export default function AppLayout() {
                     <img
                         className="poke-logo"
                         alt="pokeball-logo"
-                        src="/images/pokeball.png"
+                        src="/images/poke-ball.png"
                     />
                     <span translate="no">PokeInfo App</span>
                 </Link>
