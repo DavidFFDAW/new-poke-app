@@ -19,25 +19,25 @@ export default function MoveItem({ move }: { move: ParsedMove }) {
 
             <NullableComponent condition={move.level_learning_method === "level-up"}>
                 <td className="level">
-                    <p className="level-way" translate="no">
+                    <p className="level-way" translate="no" title="Nivel">
                         <span>{move.level_learned_at}</span>
                     </p>
                 </td>
             </NullableComponent>
 
-            <td data-item="poder" className="tcenter">
+            <td data-item="type" className="tcenter">
                 <PokeType type={moveDatas.type} />
             </td>
 
-            <td data-item="poder" className="tcenter">
+            <td data-item="potencia" className="tcenter" title="Potencia">
                 <p>{moveDatas.power || "--"}</p>
             </td>
 
-            <td data-item="precision" className="tcenter">
+            <td data-item="precision" className="tcenter" title="Precisión">
                 <p>{moveDatas.accuracy || "--"}</p>
             </td>
 
-            <td data-item="pp" className="tcenter">
+            <td data-item="pp" className="tcenter" title="PP">
                 <p>{moveDatas.pp}</p>
             </td>
 
