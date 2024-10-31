@@ -50,7 +50,7 @@ export interface ParsedMove {
 }
 
 export interface PokemonAPIDetails extends APIPokemonDetails {
-    moveGames: string[];
+    moveGames: { name: string; label: string }[];
     parsedMoves: ParsedMove[];
     evolutions: any;
     specie: PokemonSpecie;

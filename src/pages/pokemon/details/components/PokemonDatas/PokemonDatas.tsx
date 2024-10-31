@@ -1,13 +1,14 @@
-import { SimpleRoundBox } from '../../../../../components/visuals/box/boxes';
+import { SimpleRoundBox } from '@/components/visuals/box/boxes';
 import PokemonMoves from '../Moves/PokemonMoves';
-import { PokemonAPIDetails } from '../../../../../@types/global.pokemon';
+import { PokemonAPIDetails } from '@/@types/global.pokemon';
 import usePokemonDatas from './usePokemonDatas';
 import PokeAbilities from '../Abilities/abilities';
 import PokemonTypeRelations from '../Types/PokemonTypeRelations';
 import { Link } from 'react-router-dom';
-import { getPokemonEggGroup } from '../../../../../utils/pokemon.translate';
 import PokeImage from '@/components/visuals/images/PokeImage';
 import PokeType from '@/components/visuals/types/PokeType';
+import NullableComponent from '@/components/visuals/loaders/Nullable';
+import { getPokemonEggGroup, getGenderPercentages } from '@/utils';
 
 interface PokemonProps {
     pokemon: PokemonAPIDetails;
@@ -15,35 +16,36 @@ interface PokemonProps {
 
 export default function PokemonDatas({ pokemon }: PokemonProps) {
     const pageDatas = usePokemonDatas();
-    const image = pageDatas.isShiny ? pokemon.sprites.front_shiny : pokemon.sprites.front_default;
-    const backImage = pageDatas.isShiny ? pokemon.sprites.back_shiny : pokemon.sprites.back_default;
+    const images = {
+        sprite: {
+            front: pageDatas.isShiny ? pokemon.sprites.front_shiny : pokemon.sprites.front_default,
+            back: pageDatas.isShiny ? pokemon.sprites.back_shiny : pokemon.sprites.back_default
+        },
+        home: {
+            male: {
+                front: pageDatas.isShiny ? pokemon.sprites.other.home.front_shiny : pokemon.sprites.other.home.front_default,
+            },
+            female: {
+                front: pageDatas.isShiny ? pokemon.sprites.other.home.front_shiny_female : pokemon.sprites.other.home.front_female,
+            }
+        }
+    }
 
     const eggGroups = pokemon.specie.egg_groups.map(egg => ({
         ...egg, original: egg.name, name: getPokemonEggGroup(egg.name)
     }));
+    const canBreed = eggGroups.filter(egg => egg.name === 'Desconocido').length === 0;
+    const genderRatios = getGenderPercentages(pokemon.specie.gender_rate);
 
     return (
         <>
             <div className="pokemon-datas-page">
-                <div
-                    className="flex between"
-                    style={{
-                        padding: '5px 50px',
-                        marginBottom: '20px',
-                    }}
-                >
-                    {/* <button type="button" className="btn btn-download" onClick={pageDatas.toggleShiny}>
-                        {pageDatas.isShiny ? "Normal" : "Shiny"}
-                    </button> */}
-                    {/* { details.id !== 1 ? <CenteredButton text={ 'Pokemon anterior' } onclick={ _ => getNextOrPrevPokemon('prev') }></CenteredButton> : <div/> } */}
-                    {/* <CenteredButton text={ 'Siguiente pokemon' } onclick={ _ => getNextOrPrevPokemon('next') }></CenteredButton> */}
-                </div>
                 <div className="w1 flex-start between">
                     <div className="w1 details-card flex-not-align center">
                         <div className="w1 details-card-image-shiny-container">
                             <div className="w1 details-card-img flex center gap">
-                                <PokeImage src={image} alt={`${pokemon.name} front view`} />
-                                <PokeImage src={backImage} alt={`${pokemon.name} back view`} />
+                                <PokeImage src={images.sprite.front} alt={`${pokemon.name} front view`} shiny={pageDatas.isShiny} />
+                                <PokeImage src={images.sprite.back} alt={`${pokemon.name} back view`} shiny={pageDatas.isShiny} />
                             </div>
 
                             <div className="w1 flex center">
@@ -96,9 +98,12 @@ export default function PokemonDatas({ pokemon }: PokemonProps) {
                                 <p><strong>Habitat: </strong> {pokemon.specie.habitat?.name || 'Desconocido'}</p>
                                 <p><strong>Color: </strong> {pokemon.specie.color.name}</p>
                                 <p><strong>Forma: </strong> {pokemon.specie.shape.name}</p>
-                                <p><strong>¿Puede criar?</strong> {pokemon.specie.hatch_counter}</p>
                                 <p><strong>¿Es legendario?</strong> {pokemon.specie.is_legendary ? 'Sí' : 'No'}</p>
                                 <p><strong>¿Es mítico?</strong> {pokemon.specie.is_mythical ? 'Sí' : 'No'}</p>
+                                {canBreed
+                                    ? <a href="#breedability" className='btn button btn-download'>Capacidad para crianza</a>
+                                    : 'No puede criar'
+                                }
                             </div>
                         </SimpleRoundBox>
 
@@ -106,31 +111,74 @@ export default function PokemonDatas({ pokemon }: PokemonProps) {
                             <PokemonTypeRelations types={pokemon.ctypes} />
                         </SimpleRoundBox>
 
+                        <SimpleRoundBox title="Diferencias de sexo">
+                            <h3 className='w1 tcenter'>{pokemon.name} {pokemon.specie.has_gender_differences ? 'tiene' : 'no tiene'} diferencias de género.</h3>
+                            <div className='flex center'>
+                                <div className='card'>
+                                    <PokeImage width={300} className="gender" data-src={images.home.male.front} src={images.home.male.front} alt={`${pokemon.name} male front image`} shiny={pageDatas.isShiny} />
+                                    <p style={{ textAlign: 'center' }}>Masculino</p>
+                                </div>
+
+                                <NullableComponent condition={pokemon.specie.has_gender_differences}>
+                                    <div className='card'>
+                                        <PokeImage width={300} className="gender" data-src={images.home.female.front} src={images.home.female.front} alt={`${pokemon.name} female front image`} shiny={pageDatas.isShiny} />
+                                        <p style={{ textAlign: 'center' }}>Femenino</p>
+                                    </div>
+                                </NullableComponent>
+                            </div>
+
+                            <div className="flex center">
+                                <button className='btn btn-download' onClick={pageDatas.toggleShiny}>
+                                    Ver versión shiny
+                                </button>
+                            </div>
+                        </SimpleRoundBox>
+
+                        {/* <SimpleRoundBox title="Evoluciones">
+                        </SimpleRoundBox> */}
+                        <SimpleRoundBox title="Evoluciones">
+                            <pre>
+                                {JSON.stringify(pokemon.evolutions, null, 2)}
+                            </pre>
+                        </SimpleRoundBox>
+
+                        <SimpleRoundBox title="Crianza" id='breedability'>
+                            <NullableComponent condition={!canBreed}>
+                                {pokemon.name} no puede criar.
+                            </NullableComponent>
+
+                            <NullableComponent condition={canBreed}>
+                                <div className="flex start astart column gap-sm">
+                                    <p className='flex gap-sm'><strong>Porcentaje de género: </strong>
+                                        <span className='flex gap'>
+                                            <span title='femenino'>{genderRatios.female} (♀)</span>
+                                            <span> - </span>
+                                            <span title='masculino'>{genderRatios.male} (♂)</span>
+                                        </span>
+                                    </p>
+                                    <p><strong>Porcentaje de captura: </strong> {((pokemon.specie.capture_rate / 255) * 100).toFixed(2)}%</p>
+                                    <p><strong>Pasos para eclosión de huevo: </strong> {pokemon.specie.hatch_counter * 255}</p>
+                                </div>
+                            </NullableComponent>
+                        </SimpleRoundBox>
+
                         <SimpleRoundBox title="Movimientos">
                             <PokemonMoves pokemon={pokemon} />
                         </SimpleRoundBox>
+                    </div >
+                </div >
 
-                        {/* <RightPanel 
-                        details={ details } 
-                        pokemonStats={pokemonStats} 
-                        isShiny={isShiny}
-                        handleSetShiny={handleSetShiny}
-                        maleSprite={maleSprite}
-                        finalFemaleSprite={finalFemaleSprite}
-                        information={information}
-                    /> */}
-                    </div>
-                </div>
-
-                {pageDatas.isBottomPage && (
-                    <button
-                        className="btn btn-download rd fix"
-                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    >
-                        Volver arriba
-                    </button>
-                )}
-            </div>
+                {
+                    pageDatas.isBottomPage && (
+                        <button
+                            className="btn btn-download rd fix"
+                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        >
+                            Volver arriba
+                        </button>
+                    )
+                }
+            </div >
         </>
     );
 }

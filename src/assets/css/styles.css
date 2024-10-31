@@ -6,6 +6,11 @@
     padding: 0;
 }
 
+html,
+body {
+    scroll-behavior: smooth;
+}
+
 a,
 a:hover,
 a:focus,

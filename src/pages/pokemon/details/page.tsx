@@ -2,6 +2,7 @@ import SEOHead from "../../../components/seo/head";
 import PokemonDatas from "./components/PokemonDatas/PokemonDatas";
 import usePokemonDetails from "./usePokemonDetails";
 import "./poke.details.css";
+import PokemonDatasLoading from "./components/PokemonDatas/PokemonDatasLoading";
 
 export default function PokemonPage() {
     const { uuid, pokemon, loading } = usePokemonDetails();
@@ -27,7 +28,7 @@ export default function PokemonPage() {
 
                 <div className="pokemon-details-content-wrapper-container">
                     {pokemon ? <PokemonDatas pokemon={pokemon} /> : null}
-                    {loading && <p>Loading...</p>}
+                    {loading && <PokemonDatasLoading />}
                 </div>
             </article>
         </>

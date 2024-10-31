@@ -380,10 +380,6 @@ input.inpt-pad {
         max-width: 100%;
     }
 
-    .center-fix {
-        transform: translate(-50%, 40%);
-    }
-
     .btn-group {
         flex-direction: column;
     }

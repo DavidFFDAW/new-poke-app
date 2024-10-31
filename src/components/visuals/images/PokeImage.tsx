@@ -13,6 +13,8 @@ export default function PokeImage({ shiny, ...props }: Props) {
         <img
             {...props}
             draggable={false}
+            loading="lazy"
+            aria-hidden={false}
             data-is-shiny={Boolean(shiny)}
             className={imageClassName}
             onError={handleImageError}

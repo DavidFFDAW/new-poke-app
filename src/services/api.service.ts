@@ -1,9 +1,10 @@
 import { http } from "./http.service";
 import { endpoint, maxLimit } from "../constants/config";
 import {
+    getPokemonEvolution,
     getTransformedPokemonMoveDatas,
     getUniqueGamesFromMoves,
-} from "../utils/pokemon.utils";
+} from "../utils";
 import { PokemonAPIDetails } from "../@types/global.pokemon";
 import { APIPokemonDetails } from "../@types/api.pokemon";
 import { PokemonSpecie } from "../@types/api.specie";
@@ -45,7 +46,7 @@ export const apiService = {
             games: pokemon.game_indices.map((game: any) => game.version.name),
             parsedMoves,
             moveGames: getUniqueGamesFromMoves(pokemon.moves),
-            evolutions: evolutions,
+            evolutions: getPokemonEvolution(evolutions),
             ctypes: types,
         };
     },

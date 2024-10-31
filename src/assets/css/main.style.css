@@ -59,6 +59,11 @@
     color: #fff;
 }
 
+.pokemon-moves-list .table-container-horizontal-overflow {
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
 .pokemon-page.pokemon-details-page {
     margin-top: 0;
     background: transparent;
@@ -66,7 +71,7 @@
 
 .pokemon-page.pokemon-details-page .pokemon-details-content-wrapper-container {
     padding: 0 15px;
-    padding-top: calc(80px + 60px + 5px);
+    padding-top: calc(80px + 60px + 30px);
     padding-bottom: 60px;
 }
 
@@ -77,6 +82,23 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 20px;
+}
+
+.poke-spinner.poke-component-spinner.poke-adaptable-spinner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.poke-spinner.poke-component-spinner.poke-adaptable-spinner .poke-spinner-inner-circle {
+    border: 5px solid #e64d4d;
+    border-top: 5px solid #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
 }
 
 .pokemon-moves-whole-container {
@@ -163,8 +185,10 @@
     max-height: 800px;
     opacity: 1;
     filter: grayscale(0.5) brightness(0.7);
-    /* pointer-events: none; */
-    /* animation: homeBackground 8s infinite ease-in-out alternate; */
+}
+
+.poke-home-background.animate .pokemons-wrapper img {
+    height: auto;
 }
 
 .poke-home-form {
@@ -198,4 +222,14 @@
     background-repeat: no-repeat;
     background-position: bottom;
     z-index: 1;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

@@ -1,4 +1,8 @@
 @media only screen and (max-width: 768px) {
+    .poke-home-background.animate .pokemons-wrapper img {
+        width: 120px;
+    }
+
     .pokemon-page.pokemon-details-page .details-card {
         width: 100%;
         margin: 0;
@@ -7,9 +11,6 @@
     .pokemon-page.pokemon-details-page .pokemon-datas-page {
         padding: 0;
         max-width: 100%;
-        margin-top: 20px;
-        padding: 0;
-        padding-top: 50px;
     }
 
     .pokemon-page.pokemon-details-page .pokemon-datas-page .details-text {
@@ -51,6 +52,10 @@
         right: 0;
         position: relative;
         padding: 0;
+    }
+
+    .input-div.center-fix .flex.center.poke-home-form {
+        gap: 25px;
     }
 
     .poke-header input.text-search {

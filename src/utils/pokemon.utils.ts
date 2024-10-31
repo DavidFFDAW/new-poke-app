@@ -2,6 +2,7 @@ import { Mfe } from "../@types/api.pokemon";
 import { EvolutionChain } from "../@types/api.evolutions";
 import { AppEvolution, ParsedMove } from "../@types/global.pokemon";
 import { typesRelation } from "../constants/types.config";
+import { getGameName } from "./pokemon.game.util";
 
 export function getTransformedPokemonMoveDatas(moves: Mfe[]): ParsedMove[] {
     return moves
@@ -22,12 +23,17 @@ export function getTransformedPokemonMoveDatas(moves: Mfe[]): ParsedMove[] {
         .sort((a, b) => a.level_learned_at - b.level_learned_at);
 }
 
-export function getUniqueGamesFromMoves(moves: Mfe[]): string[] {
+export function getUniqueGamesFromMoves(moves: Mfe[]): { name: string; label: string }[] {
     const versions = moves.flatMap((move) =>
         move.version_group_details.map((detail) => detail.version_group.name)
     );
 
-    return Array.from(new Set(versions));
+    const uniqueGames = Array.from(new Set(versions));
+    return uniqueGames.map((game) => ({
+        name: game,
+        label: getGameName(game),
+    })).sort((a, b) => a.label.localeCompare(b.label));
+
 }
 
 export function getPokemonEvolution(evolutions: EvolutionChain) {
@@ -35,16 +41,17 @@ export function getPokemonEvolution(evolutions: EvolutionChain) {
     let evoData = evolutions.chain;
     const details = evoData.evolution_details[0];
 
+
     do {
         let numberOfEvolutions = evoData.evolves_to.length;
 
         evoChain.push({
             name: evoData.species.name,
-            level: !evoData ? 1 : details.min_level,
-            trigger: !evoData ? null : details.trigger.name,
-            item: details.item || null,
-            affection: details.min_affection,
-            happiness: details.min_happiness,
+            level: !details ? 1 : details.min_level,
+            trigger: !details ? null : details.trigger.name,
+            item: !details ? null : details.item,
+            affection: !details ? null : details.min_affection,
+            happiness: !details ? null : details.min_happiness,
             is_baby: evoData.is_baby,
             id: Number(evoData.species.url.split('https://pokeapi.co/api/v2/pokemon-species/')[1].replace(/\\/g, '')),
         });
