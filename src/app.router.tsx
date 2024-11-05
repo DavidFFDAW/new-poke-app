@@ -10,6 +10,7 @@ const PokemonPage = lazy(() => import('./pages/pokemon/details/page'));
 const PokemonEggGroupPage = lazy(() => import('./pages/pokemon/egg-group/page'));
 const PokemonTypePage = lazy(() => import('./pages/pokemon/type/page'));
 const PokemonSearchPage = lazy(() => import('./pages/pokemon/search/page'));
+const EvolutionsTestPage = lazy(() => import('./pages/evolutions/page'));
 const MoveInfoPage = () => null;
 const ErrorPage = lazy(() => import('./pages/error/page'));
 // set router and routes -> using react-router-dom
@@ -33,6 +34,9 @@ function App() {
                         element={<MoveInfoPage />}
                         key="pokemon-move-info-details-page"
                     />
+
+                    <Route path='/evos/:uuid' element={<EvolutionsTestPage />} key={'pokemon-evolution-test-page'} />
+
                     <Route path="*" element={<ErrorPage />} />
                 </Route>
             </Routes>

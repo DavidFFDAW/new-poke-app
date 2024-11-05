@@ -9,6 +9,7 @@ import PokeImage from '@/components/visuals/images/PokeImage';
 import PokeType from '@/components/visuals/types/PokeType';
 import NullableComponent from '@/components/visuals/loaders/Nullable';
 import { getPokemonEggGroup, getGenderPercentages } from '@/utils';
+import PokemonEvolutions from '../Evolution/PokeEvolutionCard';
 
 interface PokemonProps {
     pokemon: PokemonAPIDetails;
@@ -134,11 +135,10 @@ export default function PokemonDatas({ pokemon }: PokemonProps) {
                             </div>
                         </SimpleRoundBox>
 
-                        {/* <SimpleRoundBox title="Evoluciones">
-                        </SimpleRoundBox> */}
                         <SimpleRoundBox title="Evoluciones">
-                            <pre>
-                                {JSON.stringify(pokemon.evolutions, null, 2)}
+                            <PokemonEvolutions evolutions={pokemon.evolutions} />
+                            <pre style={{ display: 'none' }}>
+                                {JSON.stringify(pokemon.evolutions, null, 4)}
                             </pre>
                         </SimpleRoundBox>
 

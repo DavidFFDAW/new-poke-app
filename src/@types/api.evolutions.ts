@@ -1,5 +1,9 @@
+export interface NamedAPIResource {
+    name: string
+    url: string
+}
 export interface EvolutionChain {
-    baby_trigger_item: any
+    baby_trigger_item: NamedAPIResource
     chain: Chain
     id: number
 }

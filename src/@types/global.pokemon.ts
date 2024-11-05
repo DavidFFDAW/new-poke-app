@@ -1,3 +1,4 @@
+import { EvolutionChain } from "./api.evolutions";
 import { APIPokemonDetails } from "./api.pokemon";
 import { PokemonSpecie } from "./api.specie";
 
@@ -52,7 +53,7 @@ export interface ParsedMove {
 export interface PokemonAPIDetails extends APIPokemonDetails {
     moveGames: { name: string; label: string }[];
     parsedMoves: ParsedMove[];
-    evolutions: any;
+    evolutions: EvolutionChain;
     specie: PokemonSpecie;
     ctypes: string[];
 }
