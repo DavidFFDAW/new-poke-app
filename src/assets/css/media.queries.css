@@ -1,4 +1,13 @@
 @media only screen and (max-width: 768px) {
+    .flex.flex-responsive {
+        flex-direction: column;
+    }
+
+    .evos-page-section.evolutions-wrapper-container .single-evolution-card {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+
     .poke-home-background.animate .pokemons-wrapper img {
         width: 120px;
     }

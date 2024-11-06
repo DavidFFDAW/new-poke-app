@@ -242,6 +242,10 @@
 }
 
 /* EVOLUTIONs COMPONENT PART */
+.evos-page-section.evolutions-wrapper-container .single-evolution-card {
+    max-width: 140px;
+}
+
 .evos-page-section.evolutions-wrapper-container .single-evolution-card .image-name-container img {
     border-radius: 50%;
     border: 2px solid #e64d4d;
