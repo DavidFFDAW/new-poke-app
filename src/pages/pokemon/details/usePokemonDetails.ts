@@ -5,9 +5,11 @@ import {
     PokemonAPIDetails,
     PokemonDetailsPageState,
 } from "../../../@types/global.pokemon";
+import { NavigationCache } from "@/services/navigation.cache";
 
 export default function usePokemonDetails() {
     const { uuid } = useParams();
+    const cached = NavigationCache.get(uuid as string);
     const [datas, setDatas] = useState<PokemonDetailsPageState>({
         pokemon: null,
         loading: true,
@@ -24,6 +26,7 @@ export default function usePokemonDetails() {
                         pokemon,
                         loading: false,
                     }));
+                    NavigationCache.save(pokemon.name.toLowerCase(), datas);
                 });
         }
     }, [uuid]);

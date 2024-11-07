@@ -1,5 +1,21 @@
+h1 {
+    font-family: 'Violet', sans-serif;
+    font-size: 30px;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: pre-wrap;
+    text-align: center;
+}
+
 .w1 {
     width: 100%;
+}
+
+.tstart {
+    text-align: start;
 }
 
 .tcenter {

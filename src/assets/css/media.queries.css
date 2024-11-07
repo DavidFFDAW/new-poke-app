@@ -1,4 +1,12 @@
 @media only screen and (max-width: 768px) {
+    .responsive-tcenter {
+        text-align: center;
+    }
+
+    .responsive-tstart {
+        text-align: start;
+    }
+
     .flex.flex-responsive {
         flex-direction: column;
     }

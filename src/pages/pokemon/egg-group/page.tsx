@@ -11,21 +11,21 @@ export default function PokemonEggGroupPage() {
         : trEggGroup;
     const parsedList = eggGroup
         ? eggGroup.pokemon_species.map((poke) => {
-              return {
-                  ...poke,
-                  types: [],
-                  id: Number(
-                      poke.url
-                          .split("https://pokeapi.co/api/v2/pokemon-species")[1]
-                          .replace(/\//g, "")
-                  ),
-              };
-          })
+            return {
+                ...poke,
+                types: [],
+                id: Number(
+                    poke.url
+                        .split("https://pokeapi.co/api/v2/pokemon-species")[1]
+                        .replace(/\//g, "")
+                ),
+            };
+        })
         : [];
 
     return (
         <>
-            <h1>Pokemons con grupo huevo {realTrEggGroup}</h1>
+            <h1 className="violet">Pokemons con grupo huevo {realTrEggGroup}</h1>
 
             <NullableComponent condition={eggGroup && parsedList.length > 0}>
                 <PokeSearchList showTypes={false} list={parsedList} />
