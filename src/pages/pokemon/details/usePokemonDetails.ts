@@ -9,7 +9,6 @@ import { NavigationCache } from "@/services/navigation.cache";
 
 export default function usePokemonDetails() {
     const { uuid } = useParams();
-    const cached = NavigationCache.get(uuid as string);
     const [datas, setDatas] = useState<PokemonDetailsPageState>({
         pokemon: null,
         loading: true,
@@ -17,17 +16,30 @@ export default function usePokemonDetails() {
     });
 
     useEffect(() => {
-        if (uuid) {
-            apiService
-                .getPokemonDetails(uuid as string)
-                .then((pokemon: PokemonAPIDetails) => {
-                    setDatas((pr) => ({
-                        ...pr,
-                        pokemon,
-                        loading: false,
-                    }));
-                    NavigationCache.save(pokemon.name.toLowerCase(), datas);
-                });
+        const cachedDatas = NavigationCache.get(uuid as string);
+        if (cachedDatas) {
+            setDatas((pr) => ({
+                ...pr,
+                pokemon: cachedDatas,
+                loading: false,
+            }));
+        }
+        if (!cachedDatas && uuid) {
+            setTimeout(() => {
+                apiService
+                    .getPokemonDetails(uuid as string)
+                    .then((pokemon: PokemonAPIDetails) => {
+                        setDatas((pr) => ({
+                            ...pr,
+                            pokemon,
+                            loading: false,
+                        }));
+                        NavigationCache.save(
+                            pokemon.name.toLowerCase(),
+                            pokemon
+                        );
+                    });
+            }, 2000);
         }
     }, [uuid]);
 
