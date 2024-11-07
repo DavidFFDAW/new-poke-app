@@ -1,18 +1,33 @@
-import { Link, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+    Link,
+    Outlet,
+    useLocation,
+    useNavigate,
+    useParams,
+} from "react-router-dom";
 import HeaderSearchForm from "../components/visuals/header/search-form";
 import "../assets/css/header.css";
+import { storageService } from "@/services/storage.service";
 
 export default function AppLayout() {
     const navigate = useNavigate();
     const params = useParams();
     const { pathname } = useLocation();
-    const parsed = Object.entries(params).reduce((acc: string, [_, value]) => {
-        return acc.replace(`${value}`, "");
-    }, pathname).replace(/\//g, ' ').trim().replace(/\s+/g, '-').toLowerCase().concat("-page");
+    const parsed = Object.entries(params)
+        .reduce((acc: string, [, value]) => {
+            return acc.replace(`${value}`, "");
+        }, pathname)
+        .replace(/\//g, " ")
+        .trim()
+        .replace(/\s+/g, "-")
+        .toLowerCase()
+        .concat("-page");
 
     const handleGoBack = () => {
         navigate(-1);
     };
+
+    storageService.save("lastConnection", new Date().toLocaleString());
 
     return (
         <>
@@ -75,9 +90,12 @@ export default function AppLayout() {
 
             <main
                 id="page"
-                className={`pokeViewport ${parsed.startsWith('/') ? parsed.slice(1) : parsed}`}>
+                className={`pokeViewport ${
+                    parsed.startsWith("/") ? parsed.slice(1) : parsed
+                }`}
+            >
                 <Outlet />
-            </main >
+            </main>
         </>
     );
 }
