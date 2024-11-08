@@ -29,12 +29,13 @@ interface ItemReturn {
 
 export function getPokemonAbility(ability: string): AbilityReturn {
     const foundAbility = abilities[ability];
-    if (!foundAbility) return {
-        id: 0,
-        name: ability,
-        effect: '',
-        en: ability
-    }
+    if (!foundAbility)
+        return {
+            id: 0,
+            name: ability,
+            effect: '',
+            en: ability,
+        };
     return foundAbility;
 }
 
@@ -42,6 +43,9 @@ export function getPokemonEggGroup(eggGroup: string): string {
     return eggGroups[eggGroup] || eggGroup;
 }
 
+export function getItems() {
+    return Object.values(items);
+}
 export function getPokemonItem(key: string): ItemReturn {
     const foundItem = items[key];
     if (foundItem) return foundItem;
@@ -50,7 +54,7 @@ export function getPokemonItem(key: string): ItemReturn {
         name: key,
         image: '',
         generation: '',
-        effect: ''
+        effect: '',
     };
 }
 
@@ -65,6 +69,6 @@ export function getPokemonMove(move: string): MoveReturn {
         attackType: '',
         pp: '',
         accuracy: '',
-        effect: ''
+        effect: '',
     };
 }

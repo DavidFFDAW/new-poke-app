@@ -1,6 +1,7 @@
-export const storageKey = "poke-app-datas";
-export const endpoint = "https://pokeapi.co/api/v2/";
+export const storageKey = 'poke-app-datas';
+export const endpoint = 'https://pokeapi.co/api/v2/';
 export const maxLimit = 1500;
+export const STORAGE_VERSION = '1.1';
 
 export const typesTranslate = {
     normal: 'normal',

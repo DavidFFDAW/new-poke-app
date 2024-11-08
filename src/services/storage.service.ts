@@ -1,7 +1,7 @@
-import { storageKey } from "../constants/config";
+import { storageKey } from '../constants/config';
 
 function getStorage() {
-    return JSON.parse(localStorage.getItem(storageKey) || "{}");
+    return JSON.parse(localStorage.getItem(storageKey) || '{}');
 }
 function get(key: string) {
     const storageDatas = getStorage();
@@ -20,4 +20,5 @@ export const storageService = {
     get,
     getStorage,
     save,
+    clear: () => localStorage.removeItem(storageKey),
 };

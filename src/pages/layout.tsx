@@ -1,13 +1,17 @@
-import {
-    Link,
-    Outlet,
-    useLocation,
-    useNavigate,
-    useParams,
-} from "react-router-dom";
-import HeaderSearchForm from "../components/visuals/header/search-form";
-import "../assets/css/header.css";
-import { storageService } from "@/services/storage.service";
+import { Link, Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
+import HeaderSearchForm from '../components/visuals/header/search-form';
+import { storageService } from '@/services/storage.service';
+import { STORAGE_VERSION } from '@/constants/config';
+import '../assets/css/header.css';
+
+const storeCache = () => {
+    const storageVersion = storageService.get('version');
+    if (!storageVersion || storageVersion !== STORAGE_VERSION) {
+        storageService.clear();
+        storageService.save('version', STORAGE_VERSION);
+    }
+    storageService.save('lastConnection', new Date().toLocaleString());
+};
 
 export default function AppLayout() {
     const navigate = useNavigate();
@@ -15,24 +19,24 @@ export default function AppLayout() {
     const { pathname } = useLocation();
     const parsed = Object.entries(params)
         .reduce((acc: string, [, value]) => {
-            return acc.replace(`${value}`, "");
+            return acc.replace(`${value}`, '');
         }, pathname)
-        .replace(/\//g, " ")
+        .replace(/\//g, ' ')
         .trim()
-        .replace(/\s+/g, "-")
+        .replace(/\s+/g, '-')
         .toLowerCase()
-        .concat("-page");
+        .concat('-page');
+
+    storeCache();
 
     const handleGoBack = () => {
         navigate(-1);
     };
 
-    storageService.save("lastConnection", new Date().toLocaleString());
-
     return (
         <>
             <header className="flex between poke-header">
-                {pathname !== "/" && (
+                {pathname !== '/' && (
                     <div onClick={handleGoBack} className="back">
                         <div className="go-back">
                             <p>
@@ -41,6 +45,22 @@ export default function AppLayout() {
                         </div>
                     </div>
                 )}
+
+                <Link to="/items" className="violet link">
+                    Items
+                </Link>
+
+                <Link to="/pokemon/moves" className="violet link">
+                    Movimientos
+                </Link>
+
+                <Link to="/pokemon/teams" className="violet link">
+                    Equipo
+                </Link>
+
+                <Link to="/pokemon/favourites" className="violet link">
+                    Favoritos
+                </Link>
 
                 {/* <div className="dropdown">
                     <button className="dropbtn">Búsquedas recientes</button>
@@ -77,23 +97,14 @@ export default function AppLayout() {
                 </div> */}
 
                 <Link to="/" className="header-home-link flex between">
-                    <img
-                        className="poke-logo"
-                        alt="pokeball-logo"
-                        src="/images/poke-ball.png"
-                    />
+                    <img className="poke-logo" alt="pokeball-logo" src="/images/poke-ball.png" />
                     <span translate="no">PokeInfo App</span>
                 </Link>
 
                 <HeaderSearchForm />
             </header>
 
-            <main
-                id="page"
-                className={`pokeViewport ${
-                    parsed.startsWith("/") ? parsed.slice(1) : parsed
-                }`}
-            >
+            <main id="page" className={`pokeViewport ${parsed.startsWith('/') ? parsed.slice(1) : parsed}`}>
                 <Outlet />
             </main>
         </>
