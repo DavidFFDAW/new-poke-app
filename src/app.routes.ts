@@ -66,7 +66,7 @@ export class AppRouter {
             id: 'team',
             path: '/pokemon/teams/team/:uuid',
             page: this.getPage('./pages/pokemon/teams/details/page'),
-            key: 'pokemon-team-page',
+            key: 'pokemon-teams-team-details-page',
         },
         {
             id: 'items',
@@ -83,7 +83,7 @@ export class AppRouter {
     ];
 
     static find(id: string) {
-        return this.routes.find((route) => route.id === id);
+        return this.routes.find(route => route.id === id);
     }
 
     static findPath(id: string) {
