@@ -22,16 +22,16 @@
         "noFallthroughCasesInSwitch": true,
 
         "types": ["node"],
-        "baseUrl": "./",
+        "baseUrl": "src",
         "paths": {
-            "@/*": ["./src/*"],
-            "@config/*": ["./src/constants/*"],
-            "@utils/*": ["./src/utils/*"],
-            "@components/*": ["./src/components/*"],
-            "@services/*": ["./src/services/*"],
-            "@pages/*": ["./src/pages/*"],
-            "@assets/*": ["./src/assets/*"],
-            "@types/*": ["./src/@types/*"]
+            "@/*": ["*"],
+            "@config/*": ["config/*"],
+            "@utils/*": ["utils/*"],
+            "@components/*": ["components/*"],
+            "@services/*": ["services/*"],
+            "@pages/*": ["pages/*"],
+            "@assets/*": ["assets/*"],
+            "@types/*": ["@types/*"]
         }
     },
     "include": ["src"]
