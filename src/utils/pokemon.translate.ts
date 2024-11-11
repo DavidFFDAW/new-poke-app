@@ -1,7 +1,7 @@
-import abilities from '../lang/abilities.json';
-import moves from '../lang/moves.json';
-import items from '../lang/objects.json';
-import eggGroups from '../lang/egg-groups.json';
+import abilities from "../lang/abilities.json";
+import moves from "../lang/moves.json";
+import items from "../lang/objects.json";
+import eggGroups from "../lang/egg-groups.json";
 
 interface AbilityReturn {
     id: number;
@@ -33,7 +33,7 @@ export function getPokemonAbility(ability: string): AbilityReturn {
         return {
             id: 0,
             name: ability,
-            effect: '',
+            effect: "",
             en: ability,
         };
     return foundAbility;
@@ -51,29 +51,50 @@ export function getItems() {
         };
     });
 }
+
+export function getMoves() {
+    return Object.entries(moves).map(([key, value]) => {
+        return {
+            ...value,
+            en: key,
+        };
+    });
+}
+
 export function getPokemonItem(key: string): ItemReturn {
     const foundItem = items[key];
     if (foundItem) return foundItem;
 
     return {
         name: key,
-        image: '',
-        generation: '',
-        effect: '',
+        image: "",
+        generation: "",
+        effect: "",
     };
 }
 
 export function getPokemonMove(move: string): MoveReturn {
+    if (!move) {
+        return {
+            name: "",
+            type: "",
+            power: "",
+            attackType: "",
+            pp: "",
+            accuracy: "",
+            effect: "",
+        };
+    }
     const foundMove = moves[move];
     if (foundMove) return foundMove;
 
     return {
         name: move,
-        type: '',
-        power: '',
-        attackType: '',
-        pp: '',
-        accuracy: '',
-        effect: '',
+        type: "",
+        power: "",
+        attackType: "",
+        pp: "",
+        accuracy: "",
+        effect: "",
     };
 }

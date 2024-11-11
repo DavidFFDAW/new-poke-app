@@ -1,5 +1,5 @@
 h1 {
-    font-family: 'Violet', sans-serif;
+    font-family: "Violet", sans-serif;
     font-size: 30px;
     line-height: 1;
     margin: 0;
@@ -34,12 +34,18 @@ h1 {
 .flex.astart {
     align-items: flex-start;
 }
+.acenter {
+    align-items: center;
+}
+.flex.end {
+    justify-content: flex-end;
+}
 
-.flex.gap {
+.gap {
     gap: 20px;
 }
 
-.flex.gap-sm {
+.gap-sm {
     gap: 5px;
 }
 
@@ -121,7 +127,8 @@ h1 {
     padding: 20px;
 }
 
-.poke-spinner.poke-component-spinner.poke-adaptable-spinner .poke-spinner-inner-circle {
+.poke-spinner.poke-component-spinner.poke-adaptable-spinner
+    .poke-spinner-inner-circle {
     border: 5px solid #e64d4d;
     border-top: 5px solid #fff;
     border-radius: 50%;
@@ -262,17 +269,34 @@ h1 {
     max-width: 140px;
 }
 
-.evos-page-section.evolutions-wrapper-container .single-evolution-card .image-name-container img {
+.evos-page-section.evolutions-wrapper-container
+    .single-evolution-card
+    .image-name-container
+    img {
     border-radius: 50%;
     border: 2px solid #e64d4d;
     padding: 5px;
 }
 
-.evos-page-section.evolutions-wrapper-container .single-evolution-card .image-name-container p.poke-evolution-name {
-    font-family: 'violet', sans-serif;
+.evos-page-section.evolutions-wrapper-container
+    .single-evolution-card
+    .image-name-container
+    p.poke-evolution-name {
+    font-family: "violet", sans-serif;
     font-size: 20px;
     font-weight: 600;
     text-transform: capitalize;
+}
+
+.grid.two-column {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.grid.two-column .move-item {
+    padding: 5px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+    overflow: hidden;
 }
 
 .items-page {
@@ -310,9 +334,9 @@ h1 {
     height: 50px;
     border-radius: 50%;
     padding: 5px;
-} 
+}
 .items-page .items-list-container .item-card h2.item-name {
-    font-family: 'violet', sans-serif;
+    font-family: "violet", sans-serif;
     font-size: 20px;
     font-weight: 600;
     text-transform: capitalize;

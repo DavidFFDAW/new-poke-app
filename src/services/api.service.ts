@@ -6,7 +6,7 @@ import {
     getUniqueGamesFromMoves,
 } from "../utils";
 import { PokemonAPIDetails } from "../@types/global.pokemon";
-import { APIPokemonDetails } from "../@types/api.pokemon";
+import { APIPokemonDetails, PokeList } from "../@types/api.pokemon";
 import { EvolutionChain, PokemonSpecie } from "../@types/api.specie";
 import { APIEggGroupResponse } from "@/@types/api.egggroup";
 
@@ -36,7 +36,9 @@ export const apiService = {
         const specie = (await http.get(
             `${endpoint}/pokemon-species/${uuid}`
         )) as PokemonSpecie;
-        const evolutions = await http.get(specie.evolution_chain.url) as EvolutionChain;
+        const evolutions = (await http.get(
+            specie.evolution_chain.url
+        )) as EvolutionChain;
         const types = pokemon.types.map((type: any) => type.type.name);
         const parsedMoves = getTransformedPokemonMoveDatas(pokemon.moves);
 
@@ -49,5 +51,17 @@ export const apiService = {
             evolutions: evolutions,
             ctypes: types,
         };
+    },
+
+    getMoveDatas: async (uuid: string | number): Promise<any> => {
+        return http.get(`${endpoint}/move/${uuid}`).then((response) => {
+            return response.learned_by_pokemon.map((pokemon: PokeList) => ({
+                ...pokemon,
+                id: pokemon.url
+                    .split("https://pokeapi.co/api/v2/pokemon/")[1]
+                    .replace(/\//g, ""),
+                name: pokemon.name.replace(/-/g, " "),
+            }));
+        });
     },
 };
