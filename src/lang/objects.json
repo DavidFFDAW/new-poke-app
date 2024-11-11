@@ -9,19 +9,19 @@
         "name": "Ultra Ball",
         "generation": "8",
         "effect": "Misteriosa bola de rendimiento superior. Tiene un índice de captura mayor al de la Super Ball.",
-        "image": "https://images.wikidexcdn.net/mwuploads/wikidex/thumb/a/a9/latest/20240125175611/Ultra_Ball_%28Hisui%29_LPA.png/32px-Ultra_Ball_%28Hisui%29_LPA.png"
+        "image": "https://media.vandal.net/m/6-2020/202061210474841_3.jpg.webp"
     },
     "great-ball": {
         "name": "Super Ball",
         "generation": "8",
         "effect": "Misteriosa bola de alto rendimiento. Tiene un índice de captura superior al de la Poké Ball.",
-        "image": "https://images.wikidexcdn.net/mwuploads/wikidex/thumb/4/49/latest/20240125174920/Super_Ball_%28Hisui%29_LPA.png/32px-Super_Ball_%28Hisui%29_LPA.png"
+        "image": "https://e7.pngegg.com/pngimages/396/969/png-clipart-pokemon-go-poke-ball-pokemon-x-and-y-ball-sports-pokemon-thumbnail.png"
     },
     "pok-ball": {
         "name": "Poké Ball",
         "generation": "8",
         "effect": "Misterioso instrumento con forma de bola que se lanza a un Pokémon salvaje para capturarlo. Puede elaborarse manualmente si se reúnen los materiales necesarios.",
-        "image": "https://images.wikidexcdn.net/mwuploads/wikidex/thumb/d/da/latest/20240124235420/Pok%C3%A9_Ball_%28Hisui%29_LPA.png/32px-Pok%C3%A9_Ball_%28Hisui%29_LPA.png"
+        "image": "https://atlas-content-cdn.pixelsquid.com/stock-images/pokeball-science-fiction-device-AvOM4k9-600.jpg"
     },
     "safari-ball": {
         "name": "Safari Ball",

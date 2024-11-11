@@ -44,7 +44,12 @@ export function getPokemonEggGroup(eggGroup: string): string {
 }
 
 export function getItems() {
-    return Object.values(items);
+    return Object.entries(items).map(([key, value]) => {
+        return {
+            ...value,
+            en: key,
+        };
+    });
 }
 export function getPokemonItem(key: string): ItemReturn {
     const foundItem = items[key];

@@ -1,21 +1,17 @@
+import Paginated from '@/components/visuals/list/Paginated';
 import { getItems } from '@/utils';
+import { useSearchParams } from 'react-router-dom';
 
 export default function ItemsPage() {
     const items = getItems();
+    const [search] = useSearchParams();
+    const page = search.has('page') ? Number(search.get('page')) : 1;
 
     return (
         <section className="items-page">
-            <h1>Items</h1>
+            <h1>Objetos</h1>
 
-            <div className="flex wrap center astart gap-sm">
-                {items.map(item => (
-                    <div key={item.name} className="w1 item-wrapper card pad">
-                        <img src={item.image} alt={item.name} />
-                        <h2>{item.name}</h2>
-                        <p>{item.effect}</p>
-                    </div>
-                ))}
-            </div>
+            <Paginated items={15} list={items} page={page} className="items-list-container down" />
         </section>
     );
 }
