@@ -1,13 +1,15 @@
 import { SimpleRoundBox } from "@/components/visuals/box/boxes";
 import useMove from "./useMove";
 import PokeImage from "@/components/visuals/images/PokeImage";
+import SEOHead from "@/components/seo/head";
 
 export default function MoveDetailPage() {
     const datas = useMove();
     if (!datas.uuid) return null;
 
     return (
-        <div className="move-detail-page flex column gap">
+        <section className="move-detail-page flex column gap">
+            <SEOHead title={datas.moveDatas.name} />
             <h1>Movimiento {datas.moveDatas.name}</h1>
 
             <SimpleRoundBox title="Datos del movimiento">
@@ -52,6 +54,6 @@ export default function MoveDetailPage() {
                     )}
                 </div>
             </SimpleRoundBox>
-        </div>
+        </section>
     );
 }

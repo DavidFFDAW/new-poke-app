@@ -17,8 +17,8 @@
         "effect": "Misteriosa bola de alto rendimiento. Tiene un índice de captura superior al de la Poké Ball.",
         "image": "https://e7.pngegg.com/pngimages/396/969/png-clipart-pokemon-go-poke-ball-pokemon-x-and-y-ball-sports-pokemon-thumbnail.png"
     },
-    "pok-ball": {
-        "name": "Poké Ball",
+    "poke-ball": {
+        "name": "Poke Ball",
         "generation": "8",
         "effect": "Misterioso instrumento con forma de bola que se lanza a un Pokémon salvaje para capturarlo. Puede elaborarse manualmente si se reúnen los materiales necesarios.",
         "image": "https://atlas-content-cdn.pixelsquid.com/stock-images/pokeball-science-fiction-device-AvOM4k9-600.jpg"

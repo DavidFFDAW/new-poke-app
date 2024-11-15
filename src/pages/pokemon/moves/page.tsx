@@ -2,6 +2,7 @@ import React from "react";
 import { getMoves } from "@/utils";
 import { Link } from "react-router-dom";
 import PokeType from "@/components/visuals/types/PokeType";
+import SEOHead from "@/components/seo/head";
 
 interface MoveDatas {
     list: {
@@ -32,8 +33,9 @@ export default function MovesPage() {
     };
 
     return (
-        <div className="moves-page">
-            <h1>Moves Page</h1>
+        <section className="moves-page">
+            <SEOHead title="Lista de movimientos" />
+            <h1>Listado de movimientos</h1>
 
             <form action="" method="get" className="w1 flex end acenter">
                 <input
@@ -61,6 +63,6 @@ export default function MovesPage() {
 
                 <span>...</span>
             </div>
-        </div>
+        </section>
     );
 }

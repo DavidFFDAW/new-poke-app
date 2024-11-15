@@ -27,6 +27,38 @@ interface ItemReturn {
     effect: string;
 }
 
+export function getSearchEggGroup(eggGroup: string) {
+    return Object.entries(eggGroups).find(
+        ([key, value]) =>
+            key.toLowerCase() === eggGroup.toLowerCase() ||
+            value.toLowerCase() === eggGroup.toLowerCase()
+    );
+}
+
+export function getSearchAbility(ability: string) {
+    return Object.entries(abilities).find(
+        ([key, value]) =>
+            key.toLowerCase() === ability.toLowerCase() ||
+            value.name.toLowerCase() === ability.toLowerCase()
+    );
+}
+
+export function getSearchMove(move: string) {
+    return Object.entries(moves).find(
+        ([key, value]) =>
+            key.toLowerCase() === move.toLowerCase() ||
+            value.name.toLowerCase() === move.toLowerCase()
+    );
+}
+
+export function getSearchItem(item: string) {
+    return Object.entries(items).find(
+        ([key, value]) =>
+            key.toLowerCase() === item.toLowerCase() ||
+            value.name.toLowerCase() === item.toLowerCase()
+    );
+}
+
 export function getPokemonAbility(ability: string): AbilityReturn {
     const foundAbility = abilities[ability];
     if (!foundAbility)
