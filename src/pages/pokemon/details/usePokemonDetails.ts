@@ -17,11 +17,10 @@ export default function usePokemonDetails() {
 
     useEffect(() => {
         const cachedDatas = NavigationCache.get(uuid as string);
-        const initialDatas = cachedDatas ? cachedDatas : null;
         setDatas((pr) => ({
             ...pr,
-            pokemon: initialDatas,
-            loading: false,
+            pokemon: cachedDatas ? cachedDatas : null,
+            loading: !cachedDatas,
         }));
 
         if (!cachedDatas && uuid) {
