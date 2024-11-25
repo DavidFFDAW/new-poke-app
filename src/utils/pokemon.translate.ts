@@ -2,6 +2,7 @@ import abilities from "../lang/abilities.json";
 import moves from "../lang/moves.json";
 import items from "../lang/objects.json";
 import eggGroups from "../lang/egg-groups.json";
+import { pokemonStorage } from "@/services/pokemon.storage.service";
 
 interface AbilityReturn {
     id: number;
@@ -57,6 +58,32 @@ export function getSearchItem(item: string) {
             key.toLowerCase() === item.toLowerCase() ||
             value.name.toLowerCase() === item.toLowerCase()
     );
+}
+
+export function getSearcherDatalist() {
+    const pokeNames =
+        pokemonStorage.getPokemonCache()?.map((poke) => ({
+            id: poke.id,
+            name: poke.name,
+            type: "Pokemon",
+        })) || [];
+
+    return [
+        ...pokeNames,
+        ...Object.values(moves).map((move) => ({
+            ...move,
+            type: "Movimiento",
+        })),
+        ...Object.values(items).map((item) => ({ ...item, type: "Objeto" })),
+        ...Object.values(abilities).map((ability) => ({
+            ...ability,
+            type: "Habilidad",
+        })),
+        ...Object.values(eggGroups).map((eggGroup) => ({
+            name: eggGroup,
+            type: "Grupo Huevo",
+        })),
+    ];
 }
 
 export function getPokemonAbility(ability: string): AbilityReturn {

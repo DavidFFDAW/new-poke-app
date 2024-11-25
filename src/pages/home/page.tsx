@@ -2,9 +2,13 @@ import { useSearch } from "@/hooks/useSearch";
 import SEOHead from "../../components/seo/head";
 import HomeBackgroundPokemons from "./components/HomeBackground";
 import useHome from "./useHome";
+import { getSearcherDatalist } from "@/utils";
 
 export default function HomePage() {
     const { homePokemons } = useHome();
+    const searchDatas = getSearcherDatalist();
+    console.log(searchDatas);
+
     const { handleFormSearch } = useSearch();
 
     return (
@@ -23,12 +27,24 @@ export default function HomePage() {
                     />
 
                     <div>
-                        <form className="flex column gap-sm" action="/" onSubmit={handleFormSearch}>
+                        <form
+                            className="flex column gap-sm"
+                            action="/"
+                            onSubmit={handleFormSearch}
+                        >
+                            <datalist id="pokemon-list">
+                                {searchDatas.map((item, indx) => (
+                                    <option key={indx} value={item.name}>
+                                        {item.type}
+                                    </option>
+                                ))}
+                            </datalist>
                             <input
                                 type="text"
                                 name="search"
                                 className="general-input inpt-pad"
                                 defaultValue=""
+                                list="pokemon-list"
                             />
                             <div className="btn-group">
                                 <button
