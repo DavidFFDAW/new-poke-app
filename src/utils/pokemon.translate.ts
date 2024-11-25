@@ -63,7 +63,6 @@ export function getSearchItem(item: string) {
 export function getSearcherDatalist() {
     const pokeNames =
         pokemonStorage.getPokemonCache()?.map((poke) => ({
-            id: poke.id,
             name: poke.name,
             type: "Pokemon",
         })) || [];
@@ -71,12 +70,12 @@ export function getSearcherDatalist() {
     return [
         ...pokeNames,
         ...Object.values(moves).map((move) => ({
-            ...move,
+            move: move.name,
             type: "Movimiento",
         })),
         ...Object.values(items).map((item) => ({ ...item, type: "Objeto" })),
         ...Object.values(abilities).map((ability) => ({
-            ...ability,
+            name: ability.name,
             type: "Habilidad",
         })),
         ...Object.values(eggGroups).map((eggGroup) => ({
