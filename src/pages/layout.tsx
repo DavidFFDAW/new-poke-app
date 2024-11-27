@@ -36,20 +36,24 @@ export default function AppLayout() {
             <header className="flex between poke-header">
                 <div className="menu menu-container">
                     <div className={`menu-container-content ${menuOpen ? 'active' : ''}`}>
-                        <Link to="/items" className="violet link">
+                        <Link to="/items" className="violet link" onClick={() => setMenuOpen(false)}>
                             Items
                         </Link>
 
-                        <Link to="/pokemon/moves" className="violet link">
+                        <Link to="/pokemon/moves" className="violet link" onClick={() => setMenuOpen(false)}>
                             Movimientos
                         </Link>
 
-                        <Link to="/pokemon/teams" className="violet link">
+                        <Link to="/pokemon/teams" className="violet link" onClick={() => setMenuOpen(false)}>
                             Equipo
                         </Link>
 
-                        <Link to="/pokemon/favourites" className="violet link">
+                        <Link to="/pokemon/favourites" className="violet link" onClick={() => setMenuOpen(false)}>
                             Favoritos
+                        </Link>
+
+                        <Link to="/pokemon/random" className="violet link" onClick={() => setMenuOpen(false)}>
+                            Pokemon aleatorio
                         </Link>
                     </div>
 

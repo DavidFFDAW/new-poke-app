@@ -75,6 +75,12 @@ export class AppRouter {
             page: lazy(() => import('./pages/items/details/page')),
             key: 'pokemon-items-details-page',
         },
+        {
+            id: 'random',
+            path: '/pokemon/random',
+            page: lazy(() => import('./pages/pokemon/random/page')),
+            key: 'pokemon-random-page',
+        },
     ];
 
     static find(id: string) {
