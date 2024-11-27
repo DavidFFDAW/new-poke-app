@@ -40,13 +40,9 @@ export default function HomePage() {
                                 defaultValue=""
                                 list="pokemon-list"
                             />
-                            <div className="btn-group">
+                            <div className="w1 btn-group">
                                 <button formAction="pokemon" className="btn btn-download" type="submit">
-                                    Pokemon
-                                </button>
-
-                                <button formAction="move" className="btn btn-download" type="submit">
-                                    Movimiento
+                                    Buscar
                                 </button>
                             </div>
                         </form>

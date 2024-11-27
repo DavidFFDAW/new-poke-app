@@ -1,0 +1,56 @@
+{
+    "fairy": {
+        "name": "Hada"
+    },
+    "dragon": {
+        "name": "Dragón"
+    },
+    "dark": {
+        "name": "Siniestro"
+    },
+    "electric": {
+        "name": "Eléctrico"
+    },
+    "fire": {
+        "name": "Fuego"
+    },
+    "fighting": {
+        "name": "Lucha"
+    },
+    "flying": {
+        "name": "Volador"
+    },
+    "ghost": {
+        "name": "Fantasma"
+    },
+    "grass": {
+        "name": "Planta"
+    },
+    "ground": {
+        "name": "Tierra"
+    },
+    "ice": {
+        "name": "Hielo"
+    },
+    "normal": {
+        "name": "Normal"
+    },
+    "poison": {
+        "name": "Veneno"
+    },
+    "psychic": {
+        "name": "Psíquico"
+    },
+    "rock": {
+        "name": "Roca"
+    },
+    "steel": {
+        "name": "Acero"
+    },
+    "water": {
+        "name": "Agua"
+    },
+    "bug": {
+        "name": "Bicho"
+    }
+}

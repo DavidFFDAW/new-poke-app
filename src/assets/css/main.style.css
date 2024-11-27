@@ -377,6 +377,61 @@ h1 {
     color: #fff;
 }
 
+.menu.menu-container .menu-container-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #e64d4d;
+    border-radius: 0 0 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 5;
+    transform: translateX(-100%);
+    min-height: 0;
+    overflow: hidden;
+    transition: all .4s;
+}
+.menu.menu-container .menu-container-content a {
+    padding: 10px 15px;
+    text-transform: uppercase;
+}
+.menu.menu-container .menu-container-content.active {
+    transform: translateX(0);
+    min-height: auto;
+}
+.menu-button {
+    display: block;
+    min-width: 30px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.menu-button .menu-button-content span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: #fff;
+    margin: 5px 0;
+    border-radius: 5px;
+    transition: all .4s;
+}
+.menu-button .menu-button-content.active span {
+    width: 15px;
+}
+
+.menu-button .menu-button-content.active span:nth-child(1) {
+    transform: translate(8px, 10px) rotate(45deg);
+}
+.menu-button .menu-button-content.active span:nth-child(2) {
+    opacity: 0;
+}
+.menu-button .menu-button-content.active span:nth-child(3) {
+    transform: translate(8px, -6px) rotate(-45deg);
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);

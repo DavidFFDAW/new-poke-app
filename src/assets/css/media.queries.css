@@ -74,8 +74,4 @@
     .input-div.center-fix .flex.center.poke-home-form {
         gap: 25px;
     }
-
-    .poke-header input.text-search {
-        max-width: 150px;
-    }
 }

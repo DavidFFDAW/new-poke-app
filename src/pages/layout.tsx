@@ -3,6 +3,8 @@ import HeaderSearchForm from '../components/visuals/header/search-form';
 import { storageService } from '@/services/storage.service';
 import { STORAGE_VERSION } from '@/constants/config';
 import '../assets/css/header.css';
+import { useState } from 'react';
+import NullableComponent from '@/components/visuals/loaders/Nullable';
 
 const storeCache = () => {
     const storageVersion = storageService.get('version');
@@ -14,9 +16,11 @@ const storeCache = () => {
 };
 
 export default function AppLayout() {
-    const navigate = useNavigate();
     const params = useParams();
+    const navigate = useNavigate();
     const { pathname } = useLocation();
+    const [menuOpen, setMenuOpen] = useState<boolean>(false);
+
     const parsed = Object.entries(params)
         .reduce((acc: string, [, value]) => {
             return acc.replace(`${value}`, '');
@@ -36,31 +40,33 @@ export default function AppLayout() {
     return (
         <>
             <header className="flex between poke-header">
-                {pathname !== '/' && (
-                    <div onClick={handleGoBack} className="back">
-                        <div className="go-back">
-                            <p>
-                                <i className="arrow left"></i>
-                            </p>
-                        </div>
+                <div className="menu menu-container">
+                    <div className={`menu-container-content ${menuOpen ? 'active' : ''}`}>
+                        <Link to="/items" className="violet link">
+                            Items
+                        </Link>
+
+                        <Link to="/pokemon/moves" className="violet link">
+                            Movimientos
+                        </Link>
+
+                        <Link to="/pokemon/teams" className="violet link">
+                            Equipo
+                        </Link>
+
+                        <Link to="/pokemon/favourites" className="violet link">
+                            Favoritos
+                        </Link>
                     </div>
-                )}
 
-                <Link to="/items" className="violet link">
-                    Items
-                </Link>
-
-                <Link to="/pokemon/moves" className="violet link">
-                    Movimientos
-                </Link>
-
-                <Link to="/pokemon/teams" className="violet link">
-                    Equipo
-                </Link>
-
-                <Link to="/pokemon/favourites" className="violet link">
-                    Favoritos
-                </Link>
+                    <button onClick={() => setMenuOpen(p => !p)} className="menu-button">
+                        <div className={`menu-button-content ${menuOpen ? 'active' : ''}`}>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                </div>
 
                 {/* <div className="dropdown">
                     <button className="dropbtn">Búsquedas recientes</button>
