@@ -1,9 +1,9 @@
-import { Link, Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import HeaderSearchForm from '../components/visuals/header/search-form';
 import { storageService } from '@/services/storage.service';
 import { STORAGE_VERSION } from '@/constants/config';
-import '../assets/css/header.css';
 import { useState } from 'react';
+import '../assets/css/header.css';
 
 const storeCache = () => {
     const storageVersion = storageService.get('version');
@@ -16,7 +16,6 @@ const storeCache = () => {
 
 export default function AppLayout() {
     const params = useParams();
-    const navigate = useNavigate();
     const { pathname } = useLocation();
     const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
