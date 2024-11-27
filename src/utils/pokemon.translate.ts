@@ -1,8 +1,8 @@
-import abilities from "../lang/abilities.json";
-import moves from "../lang/moves.json";
-import items from "../lang/objects.json";
-import eggGroups from "../lang/egg-groups.json";
-import { pokemonStorage } from "@/services/pokemon.storage.service";
+import abilities from '../lang/abilities.json';
+import moves from '../lang/moves.json';
+import items from '../lang/objects.json';
+import eggGroups from '../lang/egg-groups.json';
+import { pokemonStorage } from '@/services/pokemon.storage.service';
 
 interface AbilityReturn {
     id: number;
@@ -31,56 +31,50 @@ interface ItemReturn {
 export function getSearchEggGroup(eggGroup: string) {
     return Object.entries(eggGroups).find(
         ([key, value]) =>
-            key.toLowerCase() === eggGroup.toLowerCase() ||
-            value.toLowerCase() === eggGroup.toLowerCase()
+            key.toLowerCase() === eggGroup.toLowerCase() || value.toLowerCase() === eggGroup.toLowerCase(),
     );
 }
 
 export function getSearchAbility(ability: string) {
     return Object.entries(abilities).find(
         ([key, value]) =>
-            key.toLowerCase() === ability.toLowerCase() ||
-            value.name.toLowerCase() === ability.toLowerCase()
+            key.toLowerCase() === ability.toLowerCase() || value.name.toLowerCase() === ability.toLowerCase(),
     );
 }
 
 export function getSearchMove(move: string) {
     return Object.entries(moves).find(
-        ([key, value]) =>
-            key.toLowerCase() === move.toLowerCase() ||
-            value.name.toLowerCase() === move.toLowerCase()
+        ([key, value]) => key.toLowerCase() === move.toLowerCase() || value.name.toLowerCase() === move.toLowerCase(),
     );
 }
 
 export function getSearchItem(item: string) {
     return Object.entries(items).find(
-        ([key, value]) =>
-            key.toLowerCase() === item.toLowerCase() ||
-            value.name.toLowerCase() === item.toLowerCase()
+        ([key, value]) => key.toLowerCase() === item.toLowerCase() || value.name.toLowerCase() === item.toLowerCase(),
     );
 }
 
 export function getSearcherDatalist() {
     const pokeNames =
-        pokemonStorage.getPokemonCache()?.map((poke) => ({
+        pokemonStorage.getPokemonCache()?.map(poke => ({
             name: poke.name,
-            type: "Pokemon",
+            type: 'Pokemon',
         })) || [];
 
     return [
         ...pokeNames,
-        ...Object.values(moves).map((move) => ({
-            move: move.name,
-            type: "Movimiento",
+        ...Object.values(moves).map(move => ({
+            name: move.name,
+            type: 'Movimiento',
         })),
-        ...Object.values(items).map((item) => ({ ...item, type: "Objeto" })),
-        ...Object.values(abilities).map((ability) => ({
+        ...Object.values(items).map(item => ({ ...item, type: 'Objeto' })),
+        ...Object.values(abilities).map(ability => ({
             name: ability.name,
-            type: "Habilidad",
+            type: 'Habilidad',
         })),
-        ...Object.values(eggGroups).map((eggGroup) => ({
+        ...Object.values(eggGroups).map(eggGroup => ({
             name: eggGroup,
-            type: "Grupo Huevo",
+            type: 'Grupo Huevo',
         })),
     ];
 }
@@ -91,7 +85,7 @@ export function getPokemonAbility(ability: string): AbilityReturn {
         return {
             id: 0,
             name: ability,
-            effect: "",
+            effect: '',
             en: ability,
         };
     return foundAbility;
@@ -125,22 +119,22 @@ export function getPokemonItem(key: string): ItemReturn {
 
     return {
         name: key,
-        image: "",
-        generation: "",
-        effect: "",
+        image: '',
+        generation: '',
+        effect: '',
     };
 }
 
 export function getPokemonMove(move: string): MoveReturn {
     if (!move) {
         return {
-            name: "",
-            type: "",
-            power: "",
-            attackType: "",
-            pp: "",
-            accuracy: "",
-            effect: "",
+            name: '',
+            type: '',
+            power: '',
+            attackType: '',
+            pp: '',
+            accuracy: '',
+            effect: '',
         };
     }
     const foundMove = moves[move];
@@ -148,11 +142,11 @@ export function getPokemonMove(move: string): MoveReturn {
 
     return {
         name: move,
-        type: "",
-        power: "",
-        attackType: "",
-        pp: "",
-        accuracy: "",
-        effect: "",
+        type: '',
+        power: '',
+        attackType: '',
+        pp: '',
+        accuracy: '',
+        effect: '',
     };
 }

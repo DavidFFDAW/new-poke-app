@@ -1,14 +1,12 @@
-import { useSearch } from "@/hooks/useSearch";
-import SEOHead from "../../components/seo/head";
-import HomeBackgroundPokemons from "./components/HomeBackground";
-import useHome from "./useHome";
-import { getSearcherDatalist } from "@/utils";
+import { useSearch } from '@/hooks/useSearch';
+import SEOHead from '../../components/seo/head';
+import HomeBackgroundPokemons from './components/HomeBackground';
+import useHome from './useHome';
+import { getSearcherDatalist } from '@/utils';
 
 export default function HomePage() {
     const { homePokemons } = useHome();
     const searchDatas = getSearcherDatalist();
-    console.log(searchDatas);
-
     const { handleFormSearch } = useSearch();
 
     return (
@@ -27,11 +25,7 @@ export default function HomePage() {
                     />
 
                     <div>
-                        <form
-                            className="flex column gap-sm"
-                            action="/"
-                            onSubmit={handleFormSearch}
-                        >
+                        <form className="flex column gap-sm" action="/" onSubmit={handleFormSearch}>
                             <datalist id="pokemon-list">
                                 {searchDatas.map((item, indx) => (
                                     <option key={indx} value={item.name}>
@@ -47,19 +41,11 @@ export default function HomePage() {
                                 list="pokemon-list"
                             />
                             <div className="btn-group">
-                                <button
-                                    formAction="pokemon"
-                                    className="btn btn-download"
-                                    type="submit"
-                                >
+                                <button formAction="pokemon" className="btn btn-download" type="submit">
                                     Pokemon
                                 </button>
 
-                                <button
-                                    formAction="move"
-                                    className="btn btn-download"
-                                    type="submit"
-                                >
+                                <button formAction="move" className="btn btn-download" type="submit">
                                     Movimiento
                                 </button>
                             </div>
