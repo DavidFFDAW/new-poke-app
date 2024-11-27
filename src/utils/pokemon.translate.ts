@@ -3,7 +3,7 @@ import moves from '../lang/moves.json';
 import items from '../lang/objects.json';
 import eggGroups from '../lang/egg-groups.json';
 import { pokemonStorage } from '@/services/pokemon.storage.service';
-import { typesTranslate } from '@/constants/config';
+// import { typesTranslate } from '@/constants/config';
 
 interface AbilityReturn {
     id: number;

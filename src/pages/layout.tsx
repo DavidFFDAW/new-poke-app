@@ -4,7 +4,6 @@ import { storageService } from '@/services/storage.service';
 import { STORAGE_VERSION } from '@/constants/config';
 import '../assets/css/header.css';
 import { useState } from 'react';
-import NullableComponent from '@/components/visuals/loaders/Nullable';
 
 const storeCache = () => {
     const storageVersion = storageService.get('version');
@@ -32,10 +31,6 @@ export default function AppLayout() {
         .concat('-page');
 
     storeCache();
-
-    const handleGoBack = () => {
-        navigate(-1);
-    };
 
     return (
         <>
