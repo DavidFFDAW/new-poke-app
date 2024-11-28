@@ -32,7 +32,7 @@ export default function AppLayout() {
     storeCache();
 
     return (
-        <>
+        <main id="page" className={`pokeViewport ${parsed.startsWith('/') ? parsed.slice(1) : parsed}`}>
             <header className="flex between poke-header">
                 <div className="menu menu-container">
                     <div className={`menu-container-content ${menuOpen ? 'active' : ''}`}>
@@ -66,40 +66,6 @@ export default function AppLayout() {
                     </button>
                 </div>
 
-                {/* <div className="dropdown">
-                    <button className="dropbtn">Búsquedas recientes</button>
-                    <div className="dropdown-content">
-                        {getRecentSearchs().map((poke, it) => {
-                            return (
-                                <Link
-                                    className="boxed link"
-                                    key={it}
-                                    to={poke.url}
-                                >
-                                    <div>
-                                        <img src={poke.img} alt={poke.name} />
-                                    </div>
-                                    <div>
-                                        <div className="text">
-                                            <h4 className="name">
-                                                {poke.name}
-                                            </h4>
-                                            <p className="url">{poke.url}</p>
-                                        </div>
-                                        <p className="date">
-                                            {poke.date ||
-                                                new Date()
-                                                    .toJSON()
-                                                    .slice(0, 10)
-                                                    .replace(/-/g, "/")}
-                                        </p>
-                                    </div>
-                                </Link>
-                            );
-                        })}
-                    </div>
-                </div> */}
-
                 <Link to="/" className="header-home-link flex between">
                     <img className="poke-logo" alt="pokeball-logo" src="/images/poke-ball.png" />
                     <span translate="no">PokeInfo App</span>
@@ -108,9 +74,7 @@ export default function AppLayout() {
                 <HeaderSearchForm />
             </header>
 
-            <main id="page" className={`pokeViewport ${parsed.startsWith('/') ? parsed.slice(1) : parsed}`}>
-                <Outlet />
-            </main>
-        </>
+            <Outlet />
+        </main>
     );
 }

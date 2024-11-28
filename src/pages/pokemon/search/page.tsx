@@ -7,7 +7,7 @@ export default function PokemonSearchPage() {
     const { uuid } = useParams<{ uuid: string }>();
     if (!uuid) return null;
 
-    const results = pokemonStorage.getFilteredPokemons(uuid);
+    const results = pokemonStorage.getFilteredPokemons(uuid as string);
 
     return (
         <section className="pokemon-search-results-page">

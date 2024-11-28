@@ -7,7 +7,7 @@ export default function HeaderSearchForm() {
 
     return (
         <form
-            className="last input-div"
+            className="w1 flex custom-search-form last input-div"
             action=""
             method="get"
             onSubmit={handleFormSearch}
@@ -19,7 +19,7 @@ export default function HeaderSearchForm() {
                 defaultValue={params.uuid}
             />
             <button className="btn btn-search" type="submit">
-                Search
+                Buscar
             </button>
         </form>
     );

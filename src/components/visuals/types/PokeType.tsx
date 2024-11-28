@@ -8,7 +8,10 @@ export interface PokeTypeProps {
 export default function PokeType({ type }: PokeTypeProps) {
     return (
         <Link to={`/pokemon/type/${type}`} className={`poke-type poke-type-${type}`} title={type}>
-            <span className="type">{typesTranslate[type] || type}</span>
+            <div className="inner-type-content">
+                <img src={`/images/types/${type}.svg`} alt={type} />
+                <p className="type">{typesTranslate[type] || type}</p>
+            </div>
         </Link>
     )
 }

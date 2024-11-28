@@ -10,6 +10,8 @@ import PokeType from '@/components/visuals/types/PokeType';
 import NullableComponent from '@/components/visuals/loaders/Nullable';
 import { getPokemonEggGroup, getGenderPercentages } from '@/utils';
 import PokemonEvolutions from '../Evolution/PokeEvolutionCard';
+import MobileHeader from './MobileHeader';
+// import HeaderSearchForm from '@/components/visuals/header/search-form';
 
 interface PokemonProps {
     pokemon: PokemonAPIDetails;
@@ -38,10 +40,13 @@ export default function PokemonDatas({ pokemon }: PokemonProps) {
     const canBreed = eggGroups.filter(egg => egg.name === 'Desconocido').length === 0;
     const genderRatios = getGenderPercentages(pokemon.specie.gender_rate);
 
+
     return (
         <>
             <div className="pokemon-datas-page">
-                <div className="w1 flex-start between">
+                <MobileHeader pokemon={pokemon} isShiny={pageDatas.isShiny} />
+
+                <div className="w1 flex-start between pokemon-details-real-page">
                     <div className="w1 details-card flex-not-align center">
                         <div className="w1 details-card-image-shiny-container">
                             <div className="w1 details-card-img flex center gap">

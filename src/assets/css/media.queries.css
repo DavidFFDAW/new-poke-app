@@ -66,12 +66,76 @@
 
     .poke-header .input-div {
         width: auto;
-        right: 0;
-        position: relative;
-        padding: 0;
     }
 
     .input-div.center-fix .flex.center.poke-home-form {
         gap: 25px;
+    }
+
+    .rounded-box .title {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    main.pokemon-page .mobile-details-pokemon-page-header {
+        display: block;
+        margin-bottom: 50px;
+    }
+
+    main.pokemon-page .mobile-details-pokemon-page-header .poke-header-container {
+        position: relative;
+        overflow: hidden;
+    }
+
+    main.pokemon-page .mobile-details-pokemon-page-header .svg-icon-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 160px;
+        height: 160px;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+
+
+    main.pokemon-page .mobile-details-pokemon-page-header svg.svg-icon .cls-2 {
+        fill: transparent;
+    }
+
+    main.pokemon-page .mobile-details-pokemon-page-header svg.svg-icon .cls-1 {
+        fill: #fff;
+        opacity: .6;
+    }
+
+    main.pokemon-page .mobile-details-pokemon-page-header .poke-header-container {
+        padding: 25px 10px;
+        border-radius: 0 0 50% 50%;
+    }
+
+    main.pokemon-page .mobile-details-pokemon-page-header .poke-header-container img {
+        object-position: top;
+        object-fit: contain;
+        z-index: 4;
+    }
+
+    main.pokemon-page .mobile-details-pokemon-page-header .flex.custom-search-form.input-div {
+        flex-wrap: unset;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        margin: 15px 0 0 0;
+    }
+
+    main.pokemon-page .details-title-name.bg-top,
+    main.pokemon-page .flex.between.poke-header {
+        display: none;
+    }
+
+    main.pokemon-page .pokemon-page.pokemon-details-page .pokemon-details-content-wrapper-container {
+        padding: 0;
+    }
+
+    main.pokemon-page .pokemon-details-real-page {
+        padding: 0 15px;
     }
 }

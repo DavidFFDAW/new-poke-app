@@ -36,6 +36,10 @@ button {
     cursor: pointer;
 }
 
+.read-padding {
+    padding: 0 15px;
+}
+
 .pointer {
     cursor: pointer;
 }
@@ -110,107 +114,158 @@ button {
 }
 
 .poke-type {
-    display: block;
+    display: inline-block;
     font-size: 12px;
     font-weight: 700;
-    padding: 5px 25px;
     text-transform: uppercase;
-    border-radius: 5px;
+    padding: 5px 10px;
+    border-radius: 50px;
 }
 
-.poke-type span.type {
+.type-relation-list .poke-type {
     display: block;
+}
+
+.type-relation-list .poke-type .inner-type-content {
+    justify-content: center;
+}
+
+.poke-type p.type {
+    display: block;
+}
+
+.poke-type .inner-type-content {
     width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
 }
 
-.poke-type-fire {
-    background: linear-gradient(#f7c757, #d44646 80%);
-    color: #fff;
+.poke-type img {
+    display: block;
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
 }
 
-.poke-type-water {
-    background: linear-gradient(#a5cff0, #4996d1);
-    color: #fff;
-}
 
-.poke-type-grass {
-    background: linear-gradient(#add19b, #5d9c3e);
-    color: #fff;
-}
-
-.poke-type-ground {
-    background: linear-gradient(#f8c9ab, #926c44);
-    color: #fff;
-}
-
-.poke-type-rock {
-    background: linear-gradient(#b8a038, #786824);
-    color: #fff;
-}
-
+.normal,
 .poke-type-normal {
-    background: linear-gradient(#e9e9da, #e1e1b6);
-    color: #000;
-}
-
-.poke-type-psychic {
-    background: linear-gradient(#fa92b2, #f85888);
     color: #fff;
+    background-color: rgb(159, 161, 159);
 }
 
-.poke-type-poison {
-    background: linear-gradient(#c183c1, #a040a0);
+.fire,
+.poke-type-fire {
     color: #fff;
+    background-color: rgb(230, 40, 41);
 }
 
-.poke-type-ghost {
-    background: linear-gradient(#a292bc, #705898);
-    color: #fff;
-}
-
-.poke-type-dragon {
-    background: linear-gradient(#6664f5, #3b38f8);
-    color: #fff;
-}
-
-.poke-type-electric {
-    background: linear-gradient(#fae078, #f8d030);
-    color: #000;
-}
-
-.poke-type-steel {
-    background: linear-gradient(#d1d1e0, #b8b8d0);
-    color: #000;
-}
-
-.poke-type-fairy {
-    /* background: linear-gradient(#F4BDC9, #EE99AC); */
-    background: linear-gradient(#edb7ea, #ea9ae6);
-    color: #fff;
-}
-
+.fighting,
 .poke-type-fighting {
-    background: linear-gradient(#d67873, #c03028);
     color: #fff;
+    background-color: rgb(255, 128, 0);
 }
 
-.poke-type-bug {
-    background: linear-gradient(#ebf0c5, #a8b820);
-    color: #000;
-}
-
-.poke-type-ice {
-    background: linear-gradient(#fff, #9feef5 80%);
-    color: #000;
-}
-
-.poke-type-dark {
-    background: linear-gradient(#141414, #787878);
+.water,
+.poke-type-water {
     color: #fff;
+    background-color: rgb(41, 128, 239);
 }
 
+.flying,
 .poke-type-flying {
-    background: linear-gradient(#cbcef1, #a6abea);
     color: #fff;
+    background-color: rgb(129, 185, 239);
+}
+
+.grass,
+.poke-type-grass {
+    color: #fff;
+    background-color: rgb(63, 161, 41);
+}
+
+.poison,
+.poke-type-poison {
+    color: #fff;
+    background-color: rgb(145, 65, 203);
+}
+
+.electric,
+.poke-type-electric {
+    color: #000;
+    background-color: rgb(250, 192, 0);
+}
+
+.ground,
+.poke-type-ground {
+    color: #fff;
+    background-color: rgb(145, 81, 33);
+}
+
+.psychic,
+.poke-type-psychic {
+    color: #fff;
+    background-color: rgb(239, 65, 121);
+}
+
+.rock,
+.poke-type-rock {
+    color: #fff;
+    background-color: rgb(175, 169, 129);
+}
+
+.ice,
+.poke-type-ice {
+    color: #fff;
+    background-color: rgb(61, 206, 243);
+}
+
+.bug,
+.poke-type-bug {
+    color: #fff;
+    background-color: rgb(145, 161, 25);
+}
+
+.dragon,
+.poke-type-dragon {
+    color: #fff;
+    background-color: rgb(80, 96, 225);
+}
+
+.ghost,
+.poke-type-ghost {
+    color: #fff;
+    background-color: rgb(112, 65, 112);
+}
+
+.dark,
+.poke-type-dark {
+    color: #fff;
+    background-color: rgb(98, 77, 78);
+}
+
+.steel,
+.poke-type-steel {
+    color: #000;
+    background-color: rgb(96, 161, 184);
+}
+
+.fairy,
+.poke-type-fairy {
+    color: #fff;
+    background-color: rgb(239, 112, 239);
+}
+
+.stellar,
+.poke-type-stellar {
+    color: #000;
+    background-color: rgb(64, 181, 165);
+}
+
+.type-icon {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }

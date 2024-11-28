@@ -364,21 +364,6 @@ input.inpt-pad {
         align-items: center;
     }
 
-    .poke-header .input-div {
-        width: 60%;
-        position: absolute;
-        right: 10px;
-        top: 0;
-        padding: 8% 0;
-    }
-
-
-    .poke-header .back {
-        position: absolute;
-        top: 0;
-        left: 10px;
-    }
-
     .pokemon-card-one {
         display: block;
         width: 100%;
