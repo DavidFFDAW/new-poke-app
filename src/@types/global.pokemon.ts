@@ -1,6 +1,6 @@
 import { EvolutionChain } from "./api.evolutions";
 import { APIPokemonDetails } from "./api.pokemon";
-import { Genera, PokemonSpecie } from "./api.specie";
+import { PokemonSpecie } from "./api.specie";
 
 export type PokeType =
     | "normal"
