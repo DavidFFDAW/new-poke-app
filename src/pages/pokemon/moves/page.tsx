@@ -9,6 +9,11 @@ interface MoveDatas {
         name: string;
         en: string;
         type: string;
+        power: string;
+        attackType: string;
+        pp: string;
+        accuracy: string;
+        effect: string;
     }[];
     search: string;
 }
@@ -52,12 +57,41 @@ export default function MovesPage() {
             <div className="moves-list grid two-column gap down acenter">
                 {state.list.slice(0, 50).map((move) => (
                     <Link
-                        className="w1 move-item flex column gap-sm"
                         to={`/pokemon/moves/move/${move.en}`}
+                        className={`w1 move-item flex column gap-sm poke-move poke-move-type-${move.type} type-${move.type} ${move.type}`}
+                        // style={{
+                        //     backgroundImage: `url(/images/types/${move.type}.svg)`,
+                        // }}
                         key={move.en}
                     >
-                        <h2>{move.name}</h2>
-                        <PokeType type={move.type} />
+                        <h2 className="w1 tcenter move-title">{move.name}</h2>
+                        <div className="w1 poke-move-inner flex">
+                            <div className="poke-move-inner-effects">
+                                <div className="poke-move-power-accuraccy-pp flex">
+                                    <div className="w1 poke-move-power-item flex column">
+                                        <span className="violet">
+                                            Poder base
+                                        </span>
+                                        <span>{move.power}</span>
+                                    </div>
+                                    <div className="w1 poke-move-power-item flex column">
+                                        <span className="violet">
+                                            Presición
+                                        </span>
+                                        <span>{move.accuracy}</span>
+                                    </div>
+                                    <div className="w1 poke-move-power-item flex column">
+                                        <span className="violet">PP</span>
+                                        <span>{move.pp}</span>
+                                    </div>
+                                </div>
+
+                                <p className="w1 tcenter">{move.effect}</p>
+                            </div>
+                            <div className="flex column move-type-and-attack-type">
+                                <PokeType type={move.type} />
+                            </div>
+                        </div>
                     </Link>
                 ))}
 

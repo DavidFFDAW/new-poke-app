@@ -129,7 +129,8 @@ h1 {
     padding: 20px;
 }
 
-.poke-spinner.poke-component-spinner.poke-adaptable-spinner .poke-spinner-inner-circle {
+.poke-spinner.poke-component-spinner.poke-adaptable-spinner
+    .poke-spinner-inner-circle {
     border: 5px solid #e64d4d;
     border-top: 5px solid #fff;
     border-radius: 50%;
@@ -270,13 +271,19 @@ h1 {
     max-width: 140px;
 }
 
-.evos-page-section.evolutions-wrapper-container .single-evolution-card .image-name-container img {
+.evos-page-section.evolutions-wrapper-container
+    .single-evolution-card
+    .image-name-container
+    img {
     border-radius: 50%;
     border: 2px solid #e64d4d;
     padding: 5px;
 }
 
-.evos-page-section.evolutions-wrapper-container .single-evolution-card .image-name-container p.poke-evolution-name {
+.evos-page-section.evolutions-wrapper-container
+    .single-evolution-card
+    .image-name-container
+    p.poke-evolution-name {
     font-family: "violet", sans-serif;
     font-size: 20px;
     font-weight: 600;
@@ -287,12 +294,49 @@ h1 {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
+.moves-list.grid.two-column {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
 
 .grid.two-column .move-item {
     padding: 5px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
     border-radius: 0;
     overflow: hidden;
+}
+
+.move-item .poke-move-inner-effects {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 10px 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.move-item:hover h2 {
+    color: #fff;
+}
+.move-item .move-type-and-attack-type {
+    width: 40%;
+}
+.move-item .poke-move-inner-effects * {
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+.move-item .poke-move-inner-effects p {
+    font-size: 14px;
+    text-align: start;
+    min-height: 20px;
+    text-overflow: ellipsis;
+}
+.move-item .poke-move-power-item span.violet {
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
 }
 
 .items-page {
@@ -388,7 +432,7 @@ h1 {
     transform: translateX(-100%);
     min-height: 0;
     overflow: hidden;
-    transition: all .4s;
+    transition: all 0.4s;
 }
 
 .menu.menu-container .menu-container-content a {
@@ -418,7 +462,7 @@ h1 {
     background: #fff;
     margin: 5px 0;
     border-radius: 5px;
-    transition: all .4s;
+    transition: all 0.4s;
 }
 
 .menu-button .menu-button-content.active span {

@@ -149,7 +149,6 @@ button {
     object-fit: cover;
 }
 
-
 .normal,
 .poke-type-normal {
     color: #fff;
@@ -194,7 +193,7 @@ button {
 
 .electric,
 .poke-type-electric {
-    color: #000;
+    color: #fff;
     background-color: rgb(250, 192, 0);
 }
 
@@ -248,7 +247,7 @@ button {
 
 .steel,
 .poke-type-steel {
-    color: #000;
+    color: #fff;
     background-color: rgb(96, 161, 184);
 }
 
@@ -260,7 +259,7 @@ button {
 
 .stellar,
 .poke-type-stellar {
-    color: #000;
+    color: #fff;
     background-color: rgb(64, 181, 165);
 }
 
